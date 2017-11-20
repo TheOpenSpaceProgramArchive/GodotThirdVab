@@ -59,19 +59,51 @@ public class CameraVAB : Camera
         {
             yaw -= movespeed;
         }
+
+        if (input.IsAction("vabPitchUp"))
+        {
+            pitch += movespeed;
+        }
+        if (input.IsAction("vabPitchDown"))
+        {
+            pitch -= movespeed;
+        }
+
         Move();
     }
 
     public void Move()
     {
+        if(pitch>Math.PI/2)
+        {
+            pitch = (float)Math.PI / 2;
+        }
+        if(pitch<-Math.PI/2)
+        {
+            pitch = (float)-Math.PI / 2;
+        }
+
+        //Yaw
         Vector3 pos = new Vector3(0, height, 0);
-        pos.x += (float)(distance * Math.Cos(yaw));
-        pos.z += (float)(distance * Math.Sin(yaw));
+        pos.x = (float)Math.Cos(yaw);
+        pos.z = (float)Math.Sin(yaw);
+
+        //Pitch
+        pos.y += (float)Math.Sin(pitch);
+        pos.x *= (float)Math.Cos(pitch);
+        pos.z *= (float)Math.Cos(pitch);
+
+        pos.x *= distance;
+        pos.y *= distance;
+        pos.z *= distance;
+
+
         this.SetTranslation(pos);
 
         Vector3 dir = new Vector3(0, 0, 0);
         dir.y = -yaw;
         dir.y += (float)(Math.PI/2);
+        dir.x -= pitch;
         this.SetRotation(dir);
     }
 }
