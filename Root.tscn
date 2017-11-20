@@ -1,0 +1,391 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://PartSelection.cs" type="Script" id=1]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Command.png" type="Texture" id=2]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Fueltank.png" type="Texture" id=3]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Engine.png" type="Texture" id=4]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Controll.png" type="Texture" id=5]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Separator.png" type="Texture" id=6]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Structural.png" type="Texture" id=7]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Landing.png" type="Texture" id=8]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Aerodynamics.png" type="Texture" id=9]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Electrical.png" type="Texture" id=10]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Communication.png" type="Texture" id=11]
+[ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Science.png" type="Texture" id=12]
+[ext_resource path="res://PartGrid.cs" type="Script" id=13]
+[ext_resource path="res://Selected.cs" type="Script" id=14]
+[ext_resource path="res://CameraVAB.cs" type="Script" id=15]
+
+[node name="Root" type="Spatial"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="LeftPanel" type="Panel" parent="CanvasLayer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.25
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="PartSelection" type="Panel" parent="CanvasLayer/LeftPanel"]
+
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 25.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Label" type="Label" parent="CanvasLayer/LeftPanel/PartSelection"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Part List"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="CategoryContainer" type="VBoxContainer" parent="CanvasLayer/LeftPanel/PartSelection"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -25.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 0
+alignment = 0
+_sections_unfolded = [ "Margin" ]
+
+[node name="Command" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 25.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 2 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="FuelTanks" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 25.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 3 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Engine" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 25.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 4 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Controll" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 72.0
+margin_right = 25.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Separator" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 96.0
+margin_right = 25.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 6 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Structure" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 120.0
+margin_right = 25.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 7 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Landing" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 144.0
+margin_right = 25.0
+margin_bottom = 168.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 8 )
+_sections_unfolded = [ "Margin", "Textures" ]
+
+[node name="Aerodynamics" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 168.0
+margin_right = 25.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 9 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Electrical" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 192.0
+margin_right = 25.0
+margin_bottom = 216.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 10 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Communications" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 216.0
+margin_right = 25.0
+margin_bottom = 240.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 11 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Science" type="TextureButton" parent="CanvasLayer/LeftPanel/PartSelection/CategoryContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 240.0
+margin_right = 25.0
+margin_bottom = 264.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 12 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="PartGrid" type="GridContainer" parent="CanvasLayer/LeftPanel/PartSelection"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+margin_bottom = -50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+columns = 5
+script = ExtResource( 13 )
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Craft" type="Spatial" parent="."]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Selected" type="Spatial" parent="."]
+
+script = ExtResource( 14 )
+
+[node name="CameraVAB" type="Camera" parent="."]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.76373 )
+projection = 0
+fov = 65.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = true
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler/tracking = 0
+script = ExtResource( 15 )
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Command" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Command_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/FuelTanks" to="CanvasLayer/LeftPanel/PartSelection" method="_on_FuelTanks_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Engine" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Engine_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Controll" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Controll_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Separator" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Separator_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Structure" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Structure_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Landing" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Landing_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Aerodynamics" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Aerodynamics_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Electrical" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Electrical_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Communications" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Communications_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Science" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Science_pressed"]
+
+

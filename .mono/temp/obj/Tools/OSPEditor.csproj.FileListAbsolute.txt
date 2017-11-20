@@ -1,0 +1,5 @@
+C:\Godot\Godot_v3.0-alpha2_mono_win64\games\OSPEditor\.mono\temp\obj\Tools\OSPEditor.csprojResolveAssemblyReference.cache
+C:\Godot\Godot_v3.0-alpha2_mono_win64\games\OSPEditor\.mono\temp\bin\Tools\OSPEditor.dll
+C:\Godot\Godot_v3.0-alpha2_mono_win64\games\OSPEditor\.mono\temp\bin\Tools\OSPEditor.pdb
+C:\Godot\Godot_v3.0-alpha2_mono_win64\games\OSPEditor\.mono\temp\obj\Tools\OSPEditor.dll
+C:\Godot\Godot_v3.0-alpha2_mono_win64\games\OSPEditor\.mono\temp\obj\Tools\OSPEditor.pdb

@@ -1,0 +1,5 @@
+C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\OspWab\.mono\temp\bin\Debug\OSPEditor.dll
+C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\OspWab\.mono\temp\bin\Debug\OSPEditor.pdb
+C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\OspWab\.mono\temp\obj\Debug\OspWab.csprojResolveAssemblyReference.cache
+C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\OspWab\.mono\temp\obj\Debug\OSPEditor.dll
+C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\OspWab\.mono\temp\obj\Debug\OSPEditor.pdb
