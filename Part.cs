@@ -52,6 +52,7 @@ public class Part : RigidBody
             connectionsphere.AddChild(collshape);
             connectionsphere.SetTranslation(pos);
             AddChild(connectionsphere);
+            connectionsphere.SetOwner(this);
         }
     }
 }

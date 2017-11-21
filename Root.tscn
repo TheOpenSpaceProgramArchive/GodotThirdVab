@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://PartSelection.cs" type="Script" id=1]
 [ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Command.png" type="Texture" id=2]
@@ -13,14 +13,15 @@
 [ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Communication.png" type="Texture" id=11]
 [ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Science.png" type="Texture" id=12]
 [ext_resource path="res://PartGrid.cs" type="Script" id=13]
-[ext_resource path="res://Selected.cs" type="Script" id=14]
-[ext_resource path="res://CameraVAB.cs" type="Script" id=15]
+[ext_resource path="res://TopPanel.cs" type="Script" id=14]
+[ext_resource path="res://Craft.cs" type="Script" id=15]
+[ext_resource path="res://Selected.cs" type="Script" id=16]
+[ext_resource path="res://CameraVAB.cs" type="Script" id=17]
 
 [node name="Root" type="Spatial"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -28,6 +29,7 @@ scale = Vector2( 1, 1 )
 
 [node name="LeftPanel" type="Panel" parent="CanvasLayer"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.25
@@ -342,13 +344,170 @@ columns = 5
 script = ExtResource( 13 )
 _sections_unfolded = [ "Anchor", "Margin" ]
 
+[node name="TopPanel" type="Panel" parent="CanvasLayer"]
+
+anchor_left = 0.25
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 14 )
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Save" type="Button" parent="CanvasLayer/TopPanel"]
+
+anchor_left = 0.6
+anchor_top = 0.0
+anchor_right = 0.7
+anchor_bottom = 0.0
+margin_left = -0.799988
+margin_right = -1.59998
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Save"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Load" type="Button" parent="CanvasLayer/TopPanel"]
+
+anchor_left = 0.7
+anchor_top = 0.0
+anchor_right = 0.8
+anchor_bottom = 0.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Load"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Fly" type="Button" parent="CanvasLayer/TopPanel"]
+
+anchor_left = 0.8
+anchor_top = 0.0
+anchor_right = 0.9
+anchor_bottom = 0.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Fly"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="CraftName" type="LineEdit" parent="CanvasLayer/TopPanel"]
+
+anchor_left = 0.4
+anchor_top = 0.0
+anchor_right = 0.6
+anchor_bottom = 0.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = "Sputnik"
+expand_to_len = false
+focus_mode = 2
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Exit" type="Button" parent="CanvasLayer/TopPanel"]
+
+anchor_left = 0.9
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Exit"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="LoadPopup" type="PopupPanel" parent="CanvasLayer/TopPanel"]
+
+visible = false
+anchor_left = 0.25
+anchor_top = 0.1
+anchor_right = 0.75
+anchor_bottom = 0.9
+margin_left = -192.0
+margin_top = 57.0
+margin_right = -192.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+
+[node name="CloseLoadPopup" type="Button" parent="CanvasLayer/TopPanel/LoadPopup"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -50.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Close"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
 [node name="Craft" type="Spatial" parent="."]
 
+script = ExtResource( 15 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Selected" type="Spatial" parent="."]
 
-script = ExtResource( 14 )
+script = ExtResource( 16 )
 
 [node name="CameraVAB" type="Camera" parent="."]
 
@@ -364,7 +523,7 @@ environment = null
 h_offset = 0.0
 v_offset = 0.0
 doppler/tracking = 0
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 
 [connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Command" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Command_pressed"]
 
@@ -387,5 +546,15 @@ script = ExtResource( 15 )
 [connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Communications" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Communications_pressed"]
 
 [connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Science" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Science_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/TopPanel/Save" to="CanvasLayer/TopPanel" method="_on_Save_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/TopPanel/Load" to="CanvasLayer/TopPanel" method="_on_Load_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/TopPanel/Fly" to="CanvasLayer/TopPanel" method="_on_Fly_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/TopPanel/Exit" to="CanvasLayer/TopPanel" method="_on_Exit_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/TopPanel/LoadPopup/CloseLoadPopup" to="CanvasLayer/TopPanel" method="_on_CloseLoadPopup_pressed"]
 
 

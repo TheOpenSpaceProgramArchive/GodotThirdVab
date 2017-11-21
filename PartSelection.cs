@@ -98,6 +98,7 @@ public class PartSelection : Panel
         if (Craft.GetChildren().Length == 0)
         {
             Craft.AddChild(part);
+            part.SetOwner(Craft);
         }
         else
         {
