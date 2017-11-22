@@ -25,10 +25,18 @@ public class Craft : Spatial
     {
         LineEdit shipnamenode = (LineEdit)GetNode("/root/Root/CanvasLayer/TopPanel/CraftName");
         string shipname = shipnamenode.Text;
+        SetOwnership(this.GetChild(0));
 
         PackedScene craftScene = new PackedScene();
         craftScene.Pack(this);
         ResourceSaver.Save("res://ships/" + shipname + ".tscn", craftScene);
-        Console.WriteLine("AFDASFDA");
+    }
+    public void SetOwnership(Node node)
+    {
+        node.SetOwner(this);
+        foreach(Node child in node.GetChildren())
+        {
+            SetOwnership(child);
+        }
     }
 }

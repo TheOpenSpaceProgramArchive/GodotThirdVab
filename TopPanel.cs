@@ -39,13 +39,16 @@ public class TopPanel : Panel
         string craftname = dir.GetNext();
         while (craftname != "")
         {
-            Console.WriteLine(craftname);
             Button craftbutton = new Button();
             craftbutton.Text = craftname;
+
+            object[] obj = new object[1];
+            obj[0] = craftname;
+            craftbutton.Connect("pressed", this, "OnLoadCraftPressed", obj);
+
             loadpopup.AddChild(craftbutton);
             craftname = dir.GetNext();
         }
-            //TODO:add crafts
             loadpopup.PopupCentered();
     }
 
@@ -53,6 +56,29 @@ public class TopPanel : Panel
     {
         PopupPanel loadpopup = (PopupPanel)GetNode("/root/Root/CanvasLayer/TopPanel/LoadPopup");
         loadpopup.Hide();
+    }
+
+    private void OnLoadCraftPressed(object obj)
+    {
+        string craftname = (string)obj;
+        Node Craft = GetNode("/root/Root/Craft");
+
+        //clear craft
+        foreach(Node child in Craft.GetChildren())
+        {
+            child.QueueFree();
+        }
+
+        //add ship to craft node
+        PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://Ships/" + craftname);
+        Node craftInstance = packedScene.Instance();
+        Craft.AddChild(craftInstance);
+        Node oldcraft = Craft.GetChild(0);
+        Node firstpart = oldcraft.GetChild(0);
+        oldcraft.RemoveChild(firstpart);
+        Craft.AddChild(firstpart);
+        oldcraft.QueueFree();
+
     }
 
 

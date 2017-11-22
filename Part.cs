@@ -10,6 +10,7 @@ public class Part : RigidBody
     //create part in vab
     public void CreatePart(string cfgPath)
     {
+        Node Craft = GetNode("/root/Root/Craft");
         ConfigFile cfg = new ConfigFile();
         cfg.Load(cfgPath);
 
@@ -32,6 +33,7 @@ public class Part : RigidBody
         {
             Mesh = new CylinderMesh()//TODO: change to actual mesh of the part
         };
+        mesh.SetOwner(Craft);
         SpatialMaterial material = new SpatialMaterial();
         material.AlbedoTexture = (Texture)ResourceLoader.Load((string)cfg.GetValue("part", "texturelocation"));
         mesh.SetMaterialOverride(material);
@@ -52,7 +54,7 @@ public class Part : RigidBody
             connectionsphere.AddChild(collshape);
             connectionsphere.SetTranslation(pos);
             AddChild(connectionsphere);
-            connectionsphere.SetOwner(this);
+            connectionsphere.SetOwner(Craft);
         }
     }
 }

@@ -94,6 +94,7 @@ public class Selected : Spatial
 
     public void _input(InputEventMouse mouse)
     {
+        Node Craft = GetNode("/root/Root/Craft");
         if (mouse.IsClass("InputEventMouseMotion"))
         {
             mousepos = mouse.Position;
@@ -114,7 +115,7 @@ public class Selected : Spatial
 
                         this.RemoveChild(selectedPart);
                         connectedPart.AddChild(selectedPart);
-                        selectedPart.SetOwner(connectedPart);
+                        selectedPart.SetOwner(Craft);
                         selectedPart.SetTranslation(pos);
 
                         //Todo: joints
