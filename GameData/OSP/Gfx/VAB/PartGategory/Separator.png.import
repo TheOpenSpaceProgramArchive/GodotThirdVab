@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/Separator.png-c7ee4b0fe37053cb16ea448a40208b56.stex"
 
+[deps]
+
+source_md5="486b1a688a8104e9ad8965dc6279b517"
+
 [params]
 
 compress/mode=0

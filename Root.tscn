@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://PartSelection.cs" type="Script" id=1]
 [ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Command.png" type="Texture" id=2]
@@ -14,14 +14,17 @@
 [ext_resource path="res://GameData/OSP/Gfx/VAB/PartGategory/Science.png" type="Texture" id=12]
 [ext_resource path="res://PartGrid.cs" type="Script" id=13]
 [ext_resource path="res://TopPanel.cs" type="Script" id=14]
-[ext_resource path="res://Craft.cs" type="Script" id=15]
-[ext_resource path="res://Selected.cs" type="Script" id=16]
-[ext_resource path="res://CameraVAB.cs" type="Script" id=17]
+[ext_resource path="res://PPFuelEditor.cs" type="Script" id=15]
+[ext_resource path="res://Craft.cs" type="Script" id=16]
+[ext_resource path="res://Selected.cs" type="Script" id=17]
+[ext_resource path="res://CameraVAB.cs" type="Script" id=18]
+[ext_resource path="res://MouseRay.cs" type="Script" id=19]
 
 [node name="Root" type="Spatial"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -440,11 +443,11 @@ mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 text = "Sputnik"
-expand_to_len = false
 focus_mode = 2
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
+context_menu_enabled = true
 _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="Exit" type="Button" parent="CanvasLayer/TopPanel"]
@@ -508,8 +511,9 @@ text = "Close"
 flat = false
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Tweakables" type="PopupPanel" parent="CanvasLayer"]
+[node name="PPFuelEditor" type="PopupPanel" parent="CanvasLayer"]
 
+visible = false
 anchor_left = 0.25
 anchor_top = 0.1
 anchor_right = 0.75
@@ -524,8 +528,9 @@ mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
+script = ExtResource( 15 )
 
-[node name="CloseTweakables" type="Button" parent="CanvasLayer/Tweakables"]
+[node name="Close" type="Button" parent="CanvasLayer/PPFuelEditor"]
 
 anchor_left = 1.0
 anchor_top = 0.0
@@ -546,7 +551,7 @@ text = "Close"
 flat = false
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="PartName" type="Label" parent="CanvasLayer/Tweakables"]
+[node name="PartName" type="Label" parent="CanvasLayer/PPFuelEditor"]
 
 anchor_left = 0.05
 anchor_top = 0.0
@@ -565,14 +570,17 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Tweakables"]
+[node name="TopRadiusPanel" type="Panel" parent="CanvasLayer/PPFuelEditor"]
 
-anchor_left = 0.05
+editor/display_folded = true
+anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.95
 anchor_bottom = 0.0
-margin_top = 20.0
-margin_bottom = 40.0
+margin_left = 100.0
+margin_top = 30.0
+margin_right = -0.399994
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -580,15 +588,16 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Button2" type="Button" parent="CanvasLayer/Tweakables/Panel"]
+[node name="Smaller0" type="Button" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
-anchor_left = 0.2
+anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.2
+anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 30.0
+margin_top = 20.0
 margin_right = 60.0
-margin_bottom = 20.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -602,14 +611,15 @@ text = "<"
 flat = false
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Button" type="Button" parent="CanvasLayer/Tweakables/Panel"]
+[node name="Smaller1" type="Button" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
-anchor_left = 0.2
+anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.2
+anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = 20.0
 margin_right = 30.0
-margin_bottom = 20.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -623,32 +633,35 @@ text = "<<"
 flat = false
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Label" type="Label" parent="CanvasLayer/Tweakables/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = -90.0
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "label:"
+text = "Top"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Button3" type="Button" parent="CanvasLayer/Tweakables/Panel"]
+[node name="Larger0" type="Button" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
 margin_left = -60.0
+margin_top = 20.0
 margin_right = -30.0
-margin_bottom = 20.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -662,14 +675,15 @@ text = ">"
 flat = false
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Button4" type="Button" parent="CanvasLayer/Tweakables/Panel"]
+[node name="Larger1" type="Button" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
 margin_left = -30.0
-margin_bottom = 20.0
+margin_top = 20.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -683,15 +697,16 @@ text = ">>"
 flat = false
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Tweakables/Panel"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
-anchor_left = 0.2
+anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
 margin_left = 60.0
-margin_right = -60.0
-margin_bottom = 20.0
+margin_top = 20.0
+margin_right = -61.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -708,12 +723,13 @@ editable = true
 tick_count = 0
 ticks_on_borders = false
 focus_mode = 2
+_sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Label2" type="Label" parent="CanvasLayer/Tweakables/Panel"]
+[node name="ValueCurr" type="Label" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
-anchor_left = 0.6
+anchor_left = 0.5
 anchor_top = 0.0
-anchor_right = 0.6
+anchor_right = 0.5
 anchor_bottom = 0.0
 margin_left = -20.0
 margin_right = 20.0
@@ -729,14 +745,14 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Label3" type="Label" parent="CanvasLayer/Tweakables/Panel"]
+[node name="ValueMin" type="Label" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
 
-anchor_left = 0.2
+anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.2
+anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 60.0
-margin_right = 80.0
+margin_left = 59.8
+margin_right = 94.8
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -749,7 +765,437 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="Label4" type="Label" parent="CanvasLayer/Tweakables/Panel"]
+[node name="ValueMax" type="Label" parent="CanvasLayer/PPFuelEditor/TopRadiusPanel"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -100.0
+margin_right = -60.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Value"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="BottomRadiusPanel" type="Panel" parent="CanvasLayer/PPFuelEditor"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.95
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_top = 80.0
+margin_right = -0.399994
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Smaller0" type="Button" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 60.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "<"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Smaller1" type="Button" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 30.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "<<"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Label" type="Label" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -90.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Bottom"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Larger0" type="Button" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -60.0
+margin_top = 20.0
+margin_right = -30.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = ">"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Larger1" type="Button" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -30.0
+margin_top = 20.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = ">>"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 60.0
+margin_top = 20.0
+margin_right = -61.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="ValueCurr" type="Label" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Value"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="ValueMin" type="Label" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 59.8
+margin_right = 94.8
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Value"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="ValueMax" type="Label" parent="CanvasLayer/PPFuelEditor/BottomRadiusPanel"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -100.0
+margin_right = -60.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Value"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="HeightPanel" type="Panel" parent="CanvasLayer/PPFuelEditor"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.95
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_top = 130.0
+margin_right = -0.399994
+margin_bottom = 170.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Smaller0" type="Button" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 60.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "<"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Smaller1" type="Button" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 30.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "<<"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Label" type="Label" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -90.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Radius"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Larger0" type="Button" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -60.0
+margin_top = 20.0
+margin_right = -30.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = ">"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Larger1" type="Button" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -30.0
+margin_top = 20.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = ">>"
+flat = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 60.0
+margin_top = 20.0
+margin_right = -61.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="ValueCurr" type="Label" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Value"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="ValueMin" type="Label" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 59.8
+margin_right = 94.8
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Value"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="ValueMax" type="Label" parent="CanvasLayer/PPFuelEditor/HeightPanel"]
 
 anchor_left = 1.0
 anchor_top = 0.0
@@ -771,12 +1217,12 @@ _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="Craft" type="Spatial" parent="."]
 
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Selected" type="Spatial" parent="."]
 
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="CameraVAB" type="Camera" parent="."]
 
@@ -792,7 +1238,16 @@ environment = null
 h_offset = 0.0
 v_offset = 0.0
 doppler/tracking = 0
-script = ExtResource( 17 )
+script = ExtResource( 18 )
+
+[node name="MouseRay" type="RayCast" parent="."]
+
+pause_mode = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+enabled = true
+cast_to = Vector3( 0, 0, -10 )
+collision_mask = 1
+script = ExtResource( 19 )
 
 [connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Command" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Command_pressed"]
 
@@ -825,5 +1280,7 @@ script = ExtResource( 17 )
 [connection signal="pressed" from="CanvasLayer/TopPanel/Exit" to="CanvasLayer/TopPanel" method="_on_Exit_pressed"]
 
 [connection signal="pressed" from="CanvasLayer/TopPanel/LoadPopup/CloseLoadPopup" to="CanvasLayer/TopPanel" method="_on_CloseLoadPopup_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/PPFuelEditor/Close" to="CanvasLayer/PPFuelEditor" method="_on_Close_pressed"]
 
 

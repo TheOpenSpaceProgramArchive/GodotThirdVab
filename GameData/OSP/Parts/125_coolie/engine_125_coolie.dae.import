@@ -4,6 +4,10 @@ importer="scene"
 type="PackedScene"
 path="res://.import/engine_125_coolie.dae-0ac6c784944375c1300175df1132af0e.scn"
 
+[deps]
+
+source_md5="d7018d161f4125d6a346e51b2f111265"
+
 [params]
 
 nodes/root_type="Spatial"
@@ -16,6 +20,7 @@ materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
+meshes/light_baking=0
 external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15

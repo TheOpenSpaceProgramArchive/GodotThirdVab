@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/125_decoupler.png-a89ef40cccae3b298e23defb46bbc433.stex"
 
+[deps]
+
+source_md5="bada225c4e7cc1f1980ce4df0dad8cc4"
+
 [params]
 
 compress/mode=0

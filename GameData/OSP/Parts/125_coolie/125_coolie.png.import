@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/125_coolie.png-fc2be8430b146881911b6aebe20a07a3.stex"
 
+[deps]
+
+source_md5="4f6b6f31ff5f2e9847e0ac489a52fc43"
+
 [params]
 
 compress/mode=0

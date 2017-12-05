@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class Part : RigidBody
 {
-    int mass = 1;
+    public int mass = 1;
+    public bool isProceduralTank = false;
     List<Vector3> connections =new List<Vector3>();
 
     //create part in vab
@@ -18,6 +19,11 @@ public class Part : RigidBody
 
         mass = (int)cfg.GetValue("part", "mass");
         SetMass(mass);
+
+        if((bool)cfg.GetValue("part","proceduraltank"))
+        {
+            isProceduralTank = true;
+        }
 
         for(int i=0;i< (int)cfg.GetValue("part", "connections"); i++)
         {

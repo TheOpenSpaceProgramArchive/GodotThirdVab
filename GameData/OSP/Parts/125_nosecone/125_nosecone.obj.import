@@ -4,6 +4,10 @@ importer="scene"
 type="PackedScene"
 path="res://.import/125_nosecone.obj-1903309dfa8e6ba3954ae114303ccd29.scn"
 
+[deps]
+
+source_md5="a99971e8ae2aab9463bc4ecc1d470c2f"
+
 [params]
 
 nodes/root_type="Spatial"
@@ -16,6 +20,7 @@ materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
+meshes/light_baking=0
 external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15

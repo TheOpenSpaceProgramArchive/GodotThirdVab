@@ -8,3 +8,8 @@ C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\GodotThirdVab\.mono\temp\bin\Tools\O
 C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\GodotThirdVab\.mono\temp\obj\Tools\OSPVAB.csprojResolveAssemblyReference.cache
 C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\GodotThirdVab\.mono\temp\obj\Tools\OSPVAB.dll
 C:\Godot\Godot_v3.0-alpha2_mono_win64\Games\GodotThirdVab\.mono\temp\obj\Tools\OSPVAB.pdb
+C:\Godot\Games\GodotThirdVab\.mono\temp\obj\Tools\OSPVAB.csprojResolveAssemblyReference.cache
+C:\Godot\Games\GodotThirdVab\.mono\temp\obj\Tools\OSPVAB.dll
+C:\Godot\Games\GodotThirdVab\.mono\temp\obj\Tools\OSPVAB.pdb
+C:\Godot\Games\GodotThirdVab\.mono\temp\bin\Tools\OSPVAB.dll
+C:\Godot\Games\GodotThirdVab\.mono\temp\bin\Tools\OSPVAB.pdb

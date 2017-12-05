@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/tank_125_4_uv.png-36f22c5093c8e6d72b57996019738b49.stex"
 
+[deps]
+
+source_md5="a01e31598fbac00b0c4ee900b78c9057"
+
 [params]
 
 compress/mode=0

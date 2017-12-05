@@ -4,6 +4,10 @@ importer="scene"
 type="PackedScene"
 path="res://.import/125_decoupler.obj-7ee43aba20815b058c34d9b25fa67467.scn"
 
+[deps]
+
+source_md5="6a64133a9cc7781629a084b19071aa57"
+
 [params]
 
 nodes/root_type="Spatial"
@@ -16,6 +20,7 @@ materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
+meshes/light_baking=0
 external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15

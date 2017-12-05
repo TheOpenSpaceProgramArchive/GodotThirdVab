@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/stubby_stabiliser_uv.png-5a16842409ad77a72484503a201ebf85.stex"
 
+[deps]
+
+source_md5="7afeeff66480f961769572462fa1fcc1"
+
 [params]
 
 compress/mode=0

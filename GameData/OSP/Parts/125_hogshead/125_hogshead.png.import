@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/125_hogshead.png-11dd68728553bb22b705a0fba6df3af8.stex"
 
+[deps]
+
+source_md5="a4b833364585dd306a23b71d050ececb"
+
 [params]
 
 compress/mode=0

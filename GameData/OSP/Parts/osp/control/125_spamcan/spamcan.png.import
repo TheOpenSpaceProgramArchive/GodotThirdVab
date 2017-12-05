@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/spamcan.png-b337b2c44ad143ac88fda48c89bed068.stex"
 
+[deps]
+
+source_md5="b3210ad22c23f9b600b7cf8e6c36463b"
+
 [params]
 
 compress/mode=0

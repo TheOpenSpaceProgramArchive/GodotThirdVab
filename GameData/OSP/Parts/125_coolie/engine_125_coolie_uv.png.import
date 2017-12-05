@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/engine_125_coolie_uv.png-33e3cc3ada4e41478fe50b6e8eb62ead.stex"
 
+[deps]
+
+source_md5="04757a4bc4bd97a071124841b46d50ec"
+
 [params]
 
 compress/mode=0

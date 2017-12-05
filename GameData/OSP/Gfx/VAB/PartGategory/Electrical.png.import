@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/Electrical.png-f402a1fbb513a7259ac8a3a0ab3cfe70.stex"
 
+[deps]
+
+source_md5="184660e180b2c8f421334b55bfd08c6c"
+
 [params]
 
 compress/mode=0

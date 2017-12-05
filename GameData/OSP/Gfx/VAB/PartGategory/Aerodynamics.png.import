@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/Aerodynamics.png-a00bb6b966b79cc2ce8afc17aa2357fa.stex"
 
+[deps]
+
+source_md5="9dff82cb31bd0bbdd5abaa218d4ba84c"
+
 [params]
 
 compress/mode=0

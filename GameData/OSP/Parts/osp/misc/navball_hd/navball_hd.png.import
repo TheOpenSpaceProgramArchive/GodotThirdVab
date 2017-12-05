@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/navball_hd.png-378f877daf66a603a45b130bfbda74b8.stex"
 
+[deps]
+
+source_md5="9b77dbcc5ada69630e6d023de23af734"
+
 [params]
 
 compress/mode=0

@@ -11,7 +11,8 @@ public class Selected : Spatial
     Area connectedspheresel;
     Area connectedspherecra;
     bool grabPart = false;
-
+    bool editPart = false;
+    
     public override void _Ready()
     {
         SetPhysicsProcess(true);
@@ -25,41 +26,52 @@ public class Selected : Spatial
         Vector3 to = from + (camera.ProjectRayNormal(mousepos) * partdistance);
 
         //Ray hit
-        Part hit = raycast(from, to,true);
-        if (hit != null)
+        MouseRay ray = (MouseRay)GetNode("/root/Root/MouseRay");
+        object collided = ray.collider;
+        Part hit = null;
+        if (collided != null)
         {
-            //todo: surface attachment
+            if (collided.ToString() == "Part")
+            {
+                hit = (Part)collided;
+            }
         }
 
         //part connection
         if (!connected)
         {
             this.SetTranslation(to);
-            if (this.GetChildCount() != 0)
+            if (hit != null)
             {
-                Part selectedPart = (Part)this.GetChild(0);
-                foreach (Node connection in selectedPart.GetChildren())
+                if (this.GetChildCount() != 0)
                 {
-                    if (connection.IsClass("Area"))
+                    Part selectedPart = (Part)this.GetChild(0);
+                    foreach (Node connection in selectedPart.GetChildren())
                     {
-                        Area area = (Area)connection;
-                        object[] overlaps = area.GetOverlappingAreas();
-                        if (overlaps.Length != 0)
+                        if (!connected)
                         {
-                            Node overlap = (Node)overlaps[0];
-                            if (overlap.IsClass("Area") & !this.GetChild(0).IsAParentOf(overlap))//dont overlap with other connections of same part
+                            if (connection.IsClass("Area"))
                             {
-                                Part overlapPart = (Part)overlap.GetParent();
-                                selectedPart.SetRotation(overlapPart.GetRotation());
+                                Area area = (Area)connection;
+                                object[] overlaps = area.GetOverlappingAreas();
+                                if (overlaps.Length != 0)
+                                {
+                                    Node overlap = (Node)overlaps[0];
+                                    if (overlap.IsClass("Area") & !this.GetChild(0).IsAParentOf(overlap))//dont overlap with other connections of same part
+                                    {
+                                        Part overlapPart = (Part)overlap.GetParent();
+                                        selectedPart.SetRotation(overlapPart.GetRotation());
 
-                                Vector3 pos = ((Area)overlap).GetGlobalTransform().origin;
-                                pos -= ((Area)connection).GetTranslation();
-                                
-                                this.SetTranslation(pos);
-                                connected = true;
-                                connectedPart = overlapPart;
-                                connectedspherecra = (Area)overlap;
-                                connectedspheresel = (Area)connection;
+                                        Vector3 pos = ((Area)overlap).GetGlobalTransform().origin;
+                                        pos -= ((Area)connection).GetTranslation();
+
+                                        this.SetTranslation(pos);
+                                        connected = true;
+                                        connectedPart = overlapPart;
+                                        connectedspherecra = (Area)overlap;
+                                        connectedspheresel = (Area)connection;
+                                    }
+                                }
                             }
                         }
                     }
@@ -69,25 +81,39 @@ public class Selected : Spatial
 
         else//connected == true
         {
-            hit = raycast(from, to, false);
             if (hit == null)
             {
                 connected = false;
-                this.SetTranslation(to);
             }
         }
 
-        if(grabPart)
+        if (grabPart)
         {
             grabPart = false;
 
-            hit = raycast(from, to, false);
             if (hit != null)
             {
                 hit.GetParent().RemoveChild(hit);
                 this.AddChild(hit);
                 hit.SetOwner(this);
                 hit.SetTranslation(new Vector3(0, 0, 0));
+            }
+        }
+        if (editPart)
+        {
+            editPart = false;
+
+            if (hit != null)
+            {
+                if (hit.isProceduralTank)
+                {
+                    PPFuelEditor window = (PPFuelEditor)GetNode("/root/Root/CanvasLayer/PPFuelEditor");
+                    window.PartBeingEdited = hit;
+                    window.setup();
+                    window.PopupCentered();
+                }
+
+
             }
         }
     }
@@ -136,43 +162,12 @@ public class Selected : Spatial
                 }
             }
         }
-    }
-
-    public Part raycast(Vector3 from, Vector3 to,bool passThroughItself)
-    {
-        try
+        else if (mouse.IsAction("RightClick"))
         {
-            PhysicsDirectSpaceState spaceState = GetWorld().GetDirectSpaceState();
-            if(spaceState==null)
+            if (!mouse.IsPressed())
             {
-                Console.WriteLine("Why does this happen?????");
+                editPart = true;
             }
-            Dictionary<object, object> result;
-
-            if (passThroughItself&this.GetChildCount()!=0)
-            {
-                object[] obj = new object[this.GetChildCount()];// pass through own rigidbody
-                obj = this.GetChildren();
-                result = spaceState.IntersectRay(from, to, obj);
-            }
-            else
-            {
-                result = spaceState.IntersectRay(from, to);
-            }
-
-            if (result.ContainsKey("collider"))
-            {
-                return (Part)result["collider"];
-            }
-            else
-            {
-                return null;
-            }
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex);
-            return null;
         }
     }
 }

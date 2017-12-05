@@ -4,6 +4,10 @@ importer="scene"
 type="PackedScene"
 path="res://.import/tank_125_2.obj-0b4d7f68c4b1c9660abe0d430045b24c.scn"
 
+[deps]
+
+source_md5="ba8d76d0c64ff98ac5a6829b4971fcb5"
+
 [params]
 
 nodes/root_type="Spatial"
@@ -16,6 +20,7 @@ materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
+meshes/light_baking=0
 external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15
