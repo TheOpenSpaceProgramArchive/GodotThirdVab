@@ -105,12 +105,16 @@ public class Selected : Spatial
 
             if (hit != null)
             {
-                if (hit.isProceduralTank)
+                if (hit.type== "proceduraltank")
                 {
                     PPFuelEditor window = (PPFuelEditor)GetNode("/root/Root/CanvasLayer/PPFuelEditor");
                     window.PartBeingEdited = hit;
                     window.setup();
                     window.PopupCentered();
+
+
+                    WindowDialog windowdial = (WindowDialog)GetNode("/root/Root/CanvasLayer/WindowDialog");
+                    windowdial.PopupCentered();
                 }
 
 

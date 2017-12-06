@@ -24,7 +24,6 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -349,6 +348,7 @@ _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="TopPanel" type="Panel" parent="CanvasLayer"]
 
+editor/display_folded = true
 anchor_left = 0.25
 anchor_top = 0.0
 anchor_right = 1.0
@@ -511,54 +511,34 @@ text = "Close"
 flat = false
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="PPFuelEditor" type="PopupPanel" parent="CanvasLayer"]
+[node name="PPFuelEditor" type="WindowDialog" parent="CanvasLayer"]
 
-visible = false
-anchor_left = 0.25
-anchor_top = 0.1
-anchor_right = 0.75
-anchor_bottom = 0.9
-margin_left = 64.0
-margin_top = 57.0
-margin_right = 64.0
-margin_bottom = 58.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 331.0
+margin_top = 109.0
+margin_right = 916.0
+margin_bottom = 526.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
+window_title = ""
+resizable = false
 script = ExtResource( 15 )
-
-[node name="Close" type="Button" parent="CanvasLayer/PPFuelEditor"]
-
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -50.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Close"
-flat = false
-_sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="PartName" type="Label" parent="CanvasLayer/PPFuelEditor"]
 
-anchor_left = 0.05
+anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.05
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
+margin_right = 50.0
+margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -577,10 +557,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.95
 anchor_bottom = 0.0
-margin_left = 100.0
-margin_top = 30.0
-margin_right = -0.399994
-margin_bottom = 70.0
+margin_left = 117.0
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 60.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -751,8 +731,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 59.8
-margin_right = 94.8
+margin_left = 59.0
+margin_right = 94.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -792,10 +772,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.95
 anchor_bottom = 0.0
-margin_left = 100.0
-margin_top = 80.0
-margin_right = -0.399994
-margin_bottom = 120.0
+margin_left = 117.0
+margin_top = 70.0
+margin_right = 16.0
+margin_bottom = 110.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -1002,15 +982,14 @@ _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="HeightPanel" type="Panel" parent="CanvasLayer/PPFuelEditor"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.95
 anchor_bottom = 0.0
-margin_left = 100.0
-margin_top = 130.0
-margin_right = -0.399994
-margin_bottom = 170.0
+margin_left = 117.0
+margin_top = 120.0
+margin_right = 16.0
+margin_bottom = 160.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -1076,7 +1055,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "Radius"
+text = "Height"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -1249,6 +1228,20 @@ cast_to = Vector3( 0, 0, -10 )
 collision_mask = 1
 script = ExtResource( 19 )
 
+[node name="MeshInstance" type="MeshInstance" parent="."]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = null
+skeleton = NodePath("..")
+
 [connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/Command" to="CanvasLayer/LeftPanel/PartSelection" method="_on_Command_pressed"]
 
 [connection signal="pressed" from="CanvasLayer/LeftPanel/PartSelection/CategoryContainer/FuelTanks" to="CanvasLayer/LeftPanel/PartSelection" method="_on_FuelTanks_pressed"]
@@ -1280,7 +1273,5 @@ script = ExtResource( 19 )
 [connection signal="pressed" from="CanvasLayer/TopPanel/Exit" to="CanvasLayer/TopPanel" method="_on_Exit_pressed"]
 
 [connection signal="pressed" from="CanvasLayer/TopPanel/LoadPopup/CloseLoadPopup" to="CanvasLayer/TopPanel" method="_on_CloseLoadPopup_pressed"]
-
-[connection signal="pressed" from="CanvasLayer/PPFuelEditor/Close" to="CanvasLayer/PPFuelEditor" method="_on_Close_pressed"]
 
 

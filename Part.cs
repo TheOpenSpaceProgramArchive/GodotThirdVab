@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class Part : RigidBody
 {
     public int mass = 1;
-    public bool isProceduralTank = false;
+    public string type;
+    public MeshInstance mesh;
     List<Vector3> connections =new List<Vector3>();
 
     //create part in vab
@@ -20,10 +21,7 @@ public class Part : RigidBody
         mass = (int)cfg.GetValue("part", "mass");
         SetMass(mass);
 
-        if((bool)cfg.GetValue("part","proceduraltank"))
-        {
-            isProceduralTank = true;
-        }
+        type = (string)cfg.GetValue("part", "type");
 
         for(int i=0;i< (int)cfg.GetValue("part", "connections"); i++)
         {
@@ -35,7 +33,7 @@ public class Part : RigidBody
         }
         SetMode(1);//StaticBody
 
-        MeshInstance mesh = new MeshInstance()
+        mesh = new MeshInstance()
         {
             Mesh = new CylinderMesh()//TODO: change to actual mesh of the part
         };
