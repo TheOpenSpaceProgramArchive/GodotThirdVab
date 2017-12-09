@@ -4,15 +4,27 @@ using System.Collections.Generic;
 
 public class Part : RigidBody
 {
-    public int mass = 1;
+    public float mass = 1;
     public string type;
     public MeshInstance mesh;
     List<Vector3> connections =new List<Vector3>();
 
+    //tank
+    public float volume;
+
+    //engine
+    public float seaIsp;
+    public float VacIsp;
+    public float minthrust;
+    public float maxthrust;
+    public float currentthrust;
+    public List<string> fuels = new List<string>();
+    public List<float> fuelportion = new List<float>();
+
     //create part in vab
     public void CreatePart(string cfgPath)
     {
-        Node Craft = GetNode("/root/Root/Craft");
+        Node Craft = GetNode("/root/VAB/Craft");
         ConfigFile cfg = new ConfigFile();
         cfg.Load(cfgPath);
 
@@ -59,6 +71,26 @@ public class Part : RigidBody
             connectionsphere.SetTranslation(pos);
             AddChild(connectionsphere);
             connectionsphere.SetOwner(Craft);
+        }
+
+        //proceduraltank
+        if (type == "proceduraltank")
+        {
+
+        }
+        Console.WriteLine(type);
+        //engines
+        if (type== "engine")
+        {
+            seaIsp= (int)cfg.GetValue("part", "seaisp");
+            VacIsp = (int)cfg.GetValue("part", "vacisp");
+            minthrust = (int)cfg.GetValue("part", "minthrust");
+            maxthrust = (int)cfg.GetValue("part", "maxthrust");
+            for(int i = 0;i < (int)cfg.GetValue("part", "fuels"); i++)
+            {
+                fuels.Add((string)cfg.GetValue("part", "fuel" + i));
+                fuelportion.Add(float.Parse((string)cfg.GetValue("part", "fuelportion" + i)));
+            }
         }
     }
 }

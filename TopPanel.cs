@@ -23,14 +23,14 @@ public class TopPanel : Panel
 
     private void _on_Save_pressed()
     {
-        Craft craft = (Craft)GetNode("/root/Root/Craft");
+        Craft craft = (Craft)GetNode("/root/VAB/Craft");
         craft.Save();
     }
 
 
     private void _on_Load_pressed()
     {
-        PopupPanel loadpopup = (PopupPanel)GetNode("/root/Root/CanvasLayer/TopPanel/LoadPopup");
+        PopupPanel loadpopup = (PopupPanel)GetNode("/root/VAB/CanvasLayer/TopPanel/LoadPopup");
 
         string path = "res://Ships";
         Directory dir = new Directory();
@@ -54,14 +54,14 @@ public class TopPanel : Panel
 
     private void _on_CloseLoadPopup_pressed()
     {
-        PopupPanel loadpopup = (PopupPanel)GetNode("/root/Root/CanvasLayer/TopPanel/LoadPopup");
+        PopupPanel loadpopup = (PopupPanel)GetNode("/root/VAB/CanvasLayer/TopPanel/LoadPopup");
         loadpopup.Hide();
     }
 
     private void OnLoadCraftPressed(object obj)
     {
         string craftname = (string)obj;
-        Node Craft = GetNode("/root/Root/Craft");
+        Node Craft = GetNode("/root/VAB/Craft");
 
         //clear craft
         foreach(Node child in Craft.GetChildren())

@@ -21,12 +21,12 @@ public class Selected : Spatial
 
     public void _physics_process(float delta)
     {
-        Camera camera = (Camera)GetNode("/root/Root/CameraVAB");
+        Camera camera = (Camera)GetNode("/root/VAB/CameraVAB");
         Vector3 from = camera.ProjectRayOrigin(mousepos);
         Vector3 to = from + (camera.ProjectRayNormal(mousepos) * partdistance);
 
         //Ray hit
-        MouseRay ray = (MouseRay)GetNode("/root/Root/MouseRay");
+        MouseRay ray = (MouseRay)GetNode("/root/VAB/MouseRay");
         object collided = ray.collider;
         Part hit = null;
         if (collided != null)
@@ -107,13 +107,13 @@ public class Selected : Spatial
             {
                 if (hit.type== "proceduraltank")
                 {
-                    PPFuelEditor window = (PPFuelEditor)GetNode("/root/Root/CanvasLayer/PPFuelEditor");
+                    PPFuelEditor window = (PPFuelEditor)GetNode("/root/VAB/CanvasLayer/PPFuelEditor");
                     window.PartBeingEdited = hit;
                     window.setup();
                     window.PopupCentered();
 
 
-                    WindowDialog windowdial = (WindowDialog)GetNode("/root/Root/CanvasLayer/WindowDialog");
+                    WindowDialog windowdial = (WindowDialog)GetNode("/root/VAB/CanvasLayer/WindowDialog");
                     windowdial.PopupCentered();
                 }
 
@@ -124,7 +124,7 @@ public class Selected : Spatial
 
     public void _input(InputEventMouse mouse)
     {
-        Node Craft = GetNode("/root/Root/Craft");
+        Node Craft = GetNode("/root/VAB/Craft");
         if (mouse.IsClass("InputEventMouseMotion"))
         {
             mousepos = mouse.Position;

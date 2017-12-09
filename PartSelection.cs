@@ -6,62 +6,72 @@ public class PartSelection : Panel
 {
     const string path = "res://GameData";
     List<string> partlist = new List<string>();//list of partconfig paths
-
+    List<string> fuellist = new List<string>();
+    
     public override void _Ready()
     {
-        partlist = FindAllFiles(path);
+        VAB vab = (VAB)GetNode("/root/VAB");
+        FindAllFiles(path);
     }
 
-    public List<string> FindAllFiles(string path)//find all cfg files inside GameData/modname/Parts/
+    public void FindAllFiles(string path)//find all cfg files inside GameData/modname/
     {
-        List<string> filelist = new List<string>();
-
         Directory dir = new Directory();
         dir.Open(path);
         dir.ListDirBegin(true, true);
         string dirname = dir.GetNext();
         while (dirname != "")
         {
-            if(dir.CurrentIsDir())
+            if (dir.CurrentIsDir())
             {
-                Directory subdir = new Directory();
-                subdir.Open(path + "/" + dirname);
-                subdir.ListDirBegin();
-                string subdirname = subdir.GetNext();
-                while (subdirname != "")
+                //Parts
+                Directory partdir = new Directory();
+                partdir.Open(path + "/" + dirname + "/Parts");
+                partdir.ListDirBegin();
+                string filename = partdir.GetNext();
+                while (filename != "")
                 {
-                    if(subdirname=="Parts")
+                    if (!partdir.CurrentIsDir())
                     {
-                        Directory subsubdir = new Directory();
-                        subsubdir.Open(path + "/" + dirname + "/" + subdirname);
-                        subsubdir.ListDirBegin();
-                        string filename = subsubdir.GetNext();
-                        while(filename!="")
-                        {
-                            if (!subsubdir.CurrentIsDir())
-                            {
-                                filelist.Add(path + "/" + dirname + "/" + subdirname + "/" + filename);
-                            }
-                            filename = subsubdir.GetNext();
-                        }
+                        partlist.Add(path + "/" + dirname + "/Parts/" + filename);
                     }
-                    subdirname = subdir.GetNext();
+                    filename = partdir.GetNext();
+                }
+                //Fuels
+                Directory fueldir = new Directory();
+                fueldir.Open(path + "/" + dirname + "/fuels");
+                fueldir.ListDirBegin();
+                filename = fueldir.GetNext();
+                while (filename != "")
+                {
+                    if (!fueldir.CurrentIsDir())
+                    {
+                        fuellist.Add(path + "/" + dirname + "/Fuels/" + filename);
+                    }
+                    filename = fueldir.GetNext();
                 }
             }
             dirname = dir.GetNext();
         }
-        return filelist;
+
+        //
+        foreach(string fuelpath in fuellist)
+        {
+            ConfigFile fuelconfig = new ConfigFile();
+            fuelconfig.Load(fuelpath);
+            VAB vab = (VAB)GetNode("/root/VAB");
+            Fuel fuel = new Fuel();
+            fuel.name = (string)fuelconfig.GetValue("fuel", "name");
+            fuel.density = float.Parse((string)fuelconfig.GetValue("fuel", "density"));
+            //fuel.density = (int)fuelconfig.GetValue("fuel", "density");//why no work???
+            vab.fuels.Add(fuel);
+        }
     }
 
     //show only parts from the chosen category
     private void UpdatePartGrid(string category)
     {
-        foreach(string str in partlist)
-        {
-            Console.WriteLine(str);
-        }
-
-        Node container = GetNode("/root/Root/CanvasLayer/LeftPanel/PartSelection/PartGrid");
+        Node container = GetNode("/root/VAB/CanvasLayer/LeftPanel/PartSelection/PartGrid");
         foreach (Node child in container.GetChildren())
         {
             child.QueueFree();//remove old parts
@@ -91,10 +101,10 @@ public class PartSelection : Panel
     {
         Part part = new Part();
         part.CreatePart((string)obj);
-        
-        Node Craft = GetNode("/root/Root/Craft");
-        Node Selected = GetNode("/root/Root/Selected");
-        
+
+        Node Craft = GetNode("/root/VAB/Craft");
+        Node Selected = GetNode("/root/VAB/Selected");
+
         if (Craft.GetChildren().Length == 0)
         {
             Craft.AddChild(part);

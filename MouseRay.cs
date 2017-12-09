@@ -16,7 +16,7 @@ public class MouseRay : RayCast
     public override void _Process(float delta)
     {
 
-        Camera camera = (Camera)GetNode("/root/Root/CameraVAB");
+        Camera camera = (Camera)GetNode("/root/VAB/CameraVAB");
         Vector3 from = camera.ProjectRayOrigin(mousepos);
         Vector3 to = (camera.ProjectRayNormal(mousepos) * rayLength);
 

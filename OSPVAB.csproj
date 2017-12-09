@@ -52,6 +52,7 @@
     <Compile Include="CameraVAB.cs" />
     <Compile Include="ConnectionSphere.cs" />
     <Compile Include="Craft.cs" />
+    <Compile Include="Fuel.cs" />
     <Compile Include="MouseRay.cs" />
     <Compile Include="Part.cs" />
     <Compile Include="PartGrid.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Selected.cs" />
     <Compile Include="TopPanel.cs" />
+    <Compile Include="VAB.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

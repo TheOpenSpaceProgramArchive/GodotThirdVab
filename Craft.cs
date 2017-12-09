@@ -23,7 +23,7 @@ public class Craft : Spatial
 
     public void Save()
     {
-        LineEdit shipnamenode = (LineEdit)GetNode("/root/Root/CanvasLayer/TopPanel/CraftName");
+        LineEdit shipnamenode = (LineEdit)GetNode("/root/VAB/CanvasLayer/TopPanel/CraftName");
         string shipname = shipnamenode.Text;
         SetOwnership(this.GetChild(0));
 
