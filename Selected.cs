@@ -7,12 +7,13 @@ public class Selected : Spatial
     int partdistance = 10;//distance from screen to part being moved
     Vector2 mousepos = new Vector2(0, 0);
     bool connected = false;
+    bool connectedByNode = false;
     Part connectedPart;
     Area connectedspheresel;
     Area connectedspherecra;
     bool grabPart = false;
     bool editPart = false;
-    
+
     public override void _Ready()
     {
         SetPhysicsProcess(true);
@@ -24,52 +25,62 @@ public class Selected : Spatial
         Camera camera = (Camera)GetNode("/root/VAB/CameraVAB");
         Vector3 from = camera.ProjectRayOrigin(mousepos);
         Vector3 to = from + (camera.ProjectRayNormal(mousepos) * partdistance);
-
-        //Ray hit
         MouseRay ray = (MouseRay)GetNode("/root/VAB/MouseRay");
-        object collided = ray.collider;
-        Part hit = null;
-        if (collided != null)
+        MouseRay surfaceray = (MouseRay)GetNode("/root/VAB/MouseRay2");
+
+
+        #region surface attachment
+        //Ray hit
+        if (surfaceray.hit != null)
         {
-            if (collided.ToString() == "Part")
+            if (GetChildCount() != 0)
             {
-                hit = (Part)collided;
+                this.SetTranslation(surfaceray.GetCollisionPoint());
+                connected = true;
+                connectedByNode = false;
+                connectedPart = surfaceray.hit;
             }
         }
+        #endregion
 
-        //part connection
-        if (!connected)
+        #region node attachment
+        else//surface attachment did not collide
         {
-            this.SetTranslation(to);
-            if (hit != null)
+            //part connection
+            if (!connected)
             {
-                if (this.GetChildCount() != 0)
+                this.SetTranslation(to);
+                if (ray.hit != null)
                 {
-                    Part selectedPart = (Part)this.GetChild(0);
-                    foreach (Node connection in selectedPart.GetChildren())
+                    if (this.GetChildCount() != 0)
                     {
-                        if (!connected)
+                        Part selectedPart = (Part)this.GetChild(0);
+                        foreach (Node connection in selectedPart.GetChildren())
                         {
-                            if (connection.IsClass("Area"))
+                            if (!connected)
                             {
-                                Area area = (Area)connection;
-                                object[] overlaps = area.GetOverlappingAreas();
-                                if (overlaps.Length != 0)
+                                if (connection.IsClass("Area"))
                                 {
-                                    Node overlap = (Node)overlaps[0];
-                                    if (overlap.IsClass("Area") & !this.GetChild(0).IsAParentOf(overlap))//dont overlap with other connections of same part
+                                    Area area = (Area)connection;
+                                    object[] overlaps = area.GetOverlappingAreas();
+                                    if (overlaps.Length != 0)
                                     {
-                                        Part overlapPart = (Part)overlap.GetParent();
-                                        selectedPart.SetRotation(overlapPart.GetRotation());
+                                        Node overlap = (Node)overlaps[0];
+                                        if (overlap.IsClass("Area") & !this.GetChild(0).IsAParentOf(overlap))//dont overlap with other connections of same part
+                                        {
+                                            Part overlapPart = (Part)overlap.GetParent();
+                                            selectedPart.SetRotation(overlapPart.GetRotation());
 
-                                        Vector3 pos = ((Area)overlap).GetGlobalTransform().origin;
-                                        pos -= ((Area)connection).GetTranslation();
+                                            Vector3 pos = ((Area)overlap).GetGlobalTransform().origin;
+                                            pos -= ((Area)connection).GetTranslation();
 
-                                        this.SetTranslation(pos);
-                                        connected = true;
-                                        connectedPart = overlapPart;
-                                        connectedspherecra = (Area)overlap;
-                                        connectedspheresel = (Area)connection;
+                                            this.SetTranslation(pos);
+                                            connected = true;
+                                            connectedByNode = true;
+                                            connectedPart = overlapPart;
+                                            connectedspherecra = (Area)overlap;
+                                            connectedspheresel = (Area)connection;
+                                        }
                                     }
                                 }
                             }
@@ -77,47 +88,40 @@ public class Selected : Spatial
                     }
                 }
             }
-        }
-
-        else//connected == true
-        {
-            if (hit == null)
+            #endregion
+            else//connected == true
             {
-                connected = false;
+                if (ray.hit == null)
+                {
+                    connected = false;
+                }
             }
         }
 
         if (grabPart)
         {
             grabPart = false;
-
-            if (hit != null)
+            if (ray.hit != null)
             {
-                hit.GetParent().RemoveChild(hit);
-                this.AddChild(hit);
-                hit.SetOwner(this);
-                hit.SetTranslation(new Vector3(0, 0, 0));
+                ray.hit.GetParent().RemoveChild(ray.hit);
+                this.AddChild(ray.hit);
+                ray.hit.SetOwner(this);
+                ray.hit.SetTranslation(new Vector3(0, 0, 0));
             }
         }
         if (editPart)
         {
             editPart = false;
 
-            if (hit != null)
+            if (ray.hit != null)
             {
-                if (hit.type== "proceduraltank")
+                if (ray.hit.type == "proceduraltank")
                 {
                     PPFuelEditor window = (PPFuelEditor)GetNode("/root/VAB/CanvasLayer/PPFuelEditor");
-                    window.PartBeingEdited = hit;
+                    window.PartBeingEdited = ray.hit;
                     window.setup();
                     window.PopupCentered();
-
-
-                    WindowDialog windowdial = (WindowDialog)GetNode("/root/VAB/CanvasLayer/WindowDialog");
-                    windowdial.PopupCentered();
                 }
-
-
             }
         }
     }
@@ -140,8 +144,17 @@ public class Selected : Spatial
                     //connect part
                     if (connected)
                     {
-                        Vector3 pos = connectedspherecra.GetTranslation();
-                        pos -= connectedspheresel.GetTranslation();
+                        Vector3 pos;
+                        if (connectedByNode)
+                        {
+                            pos = connectedspherecra.GetTranslation();
+                            pos -= connectedspheresel.GetTranslation();
+                        }
+                        else
+                        {
+                            pos = GetTranslation();
+                            pos -= connectedPart.GetGlobalTransform().origin;
+                        }
 
                         this.RemoveChild(selectedPart);
                         connectedPart.AddChild(selectedPart);

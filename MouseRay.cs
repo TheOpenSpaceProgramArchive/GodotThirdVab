@@ -3,10 +3,10 @@ using System;
 
 public class MouseRay : RayCast
 {
-    public object collider;
+    public Part hit;
     Vector2 mousepos = new Vector2(0, 0);
 
-    float rayLength = 20;
+    float rayLength = 1000;
 
     public override void _Ready()
     {
@@ -23,15 +23,22 @@ public class MouseRay : RayCast
         Translation = from;
         CastTo = to;
 
+        //prevent ray from colliding with selected part
+        if (GetName() == "MouseRay2")
+        {
+            ClearExceptions();
+            AddExeptions(GetNode("/root/VAB/Selected"));
+        }
+
+        hit = null;
         if (IsColliding())
         {
-            collider = GetCollider();
-            //Console.WriteLine("Hit");
-        }
-        else
-        {
-            collider = null;
-            //Console.WriteLine("Miss");
+            object collider = GetCollider();
+            if (collider.ToString() == "Part")
+            {
+                hit = (Part)collider;
+                //Console.WriteLine("Hit");
+            }
         }
     }
     public void _input(InputEventMouse mouse)
@@ -39,6 +46,14 @@ public class MouseRay : RayCast
         if (mouse.IsClass("InputEventMouseMotion"))
         {
             mousepos = mouse.Position;
+        }
+    }
+    public void AddExeptions(Node node)
+    {
+        AddException(node);
+        foreach(Node n in node.GetChildren())
+        {
+            AddExeptions(n);
         }
     }
 }

@@ -51,19 +51,19 @@ public class PPFuelEditor : WindowDialog
         Label hmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueMin");
         Label hmax = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueMax");
 
-        trcur.Text = topRadiusSlider.Value.ToString();
-        brcur.Text = bottomRadiusSlider.Value.ToString();
-        hcur.Text = heightSlider.Value.ToString();
+        trcur.Text = topRadiusSlider.Value.ToString() + " m";
+        brcur.Text = bottomRadiusSlider.Value.ToString() + " m";
+        hcur.Text = heightSlider.Value.ToString() + " m";
 
-        trmin.Text = topRadiusSlider.MinValue.ToString();
-        brmin.Text = bottomRadiusSlider.MinValue.ToString();
-        hmin.Text = heightSlider.MinValue.ToString();
+        trmin.Text = topRadiusSlider.MinValue.ToString() + " m";
+        brmin.Text = bottomRadiusSlider.MinValue.ToString() + " m";
+        hmin.Text = heightSlider.MinValue.ToString() + " m";
 
-        trmax.Text = topRadiusSlider.MaxValue.ToString();
-        brmax.Text = bottomRadiusSlider.MaxValue.ToString();
-        hmax.Text = heightSlider.MaxValue.ToString();
+        trmax.Text = topRadiusSlider.MaxValue.ToString() + " m";
+        brmax.Text = bottomRadiusSlider.MaxValue.ToString() + " m";
+        hmax.Text = heightSlider.MaxValue.ToString() + " m";
         #endregion
-
+        #region updatemesh
         topRadius = topRadiusSlider.Value;
         bottomradius = bottomRadiusSlider.Value;
         height = heightSlider.Value;
@@ -112,7 +112,19 @@ public class PPFuelEditor : WindowDialog
         }
         am = st.Commit(am);
         PartBeingEdited.mesh.SetMesh(am);
+        #endregion
 
+        int ymul = 1;
+        foreach (Node child in PartBeingEdited.GetChildren())
+        {
+            if(child.IsClass("Area"))
+            {
+                Area area = (Area)child;
+                Vector3 pos = new Vector3(0, (height/2)*ymul, 0);
+                area.SetTranslation(pos);
+                ymul *= -1;
+            }
+        }
 
         Label volumelabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/VolumeLabel");
         Label drymasslabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/DryMassLabel");
@@ -122,6 +134,12 @@ public class PPFuelEditor : WindowDialog
 
         PartBeingEdited.mass = PartBeingEdited.volume * massMultiplier;
         drymasslabel.Text = ("Dry mass: " + PartBeingEdited.mass + " Kg");
+
+        #region fuel
+        //find all engine parts
+
+
+        #endregion
     }
 
     private Vector3 StepToVector3(int step, float radius, float h)
@@ -232,7 +250,7 @@ public class PPFuelEditor : WindowDialog
 
     public void setup()
     {
-
+        OnSliderChanged(0);
     }
 }
 

@@ -105,6 +105,15 @@ public class PartSelection : Panel
         Node Craft = GetNode("/root/VAB/Craft");
         Node Selected = GetNode("/root/VAB/Selected");
 
+
+        if (part.type == "proceduraltank")
+        {
+            PPFuelEditor window = (PPFuelEditor)GetNode("/root/VAB/CanvasLayer/PPFuelEditor");
+            window.PartBeingEdited = part;
+            window.setup();
+            //window.PopupCentered();
+        }
+
         if (Craft.GetChildren().Length == 0)
         {
             Craft.AddChild(part);
