@@ -112,6 +112,9 @@ public class PPFuelEditor : WindowDialog
         }
         am = st.Commit(am);
         PartBeingEdited.mesh.SetMesh(am);
+
+        PartBeingEdited.UpdateCollisionShape();
+
         #endregion
 
         int ymul = 1;

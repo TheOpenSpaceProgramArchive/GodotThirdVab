@@ -54,9 +54,7 @@ public class Part : RigidBody
 
         AddChild(mesh);
 
-        CreateShapeOwner(this);
-        this.ShapeOwnerAddShape(0, mesh.Mesh.CreateTrimeshShape());
-
+        UpdateCollisionShape();
 
         //create connection spheres
         foreach (Vector3 pos in connections)
@@ -89,5 +87,11 @@ public class Part : RigidBody
                 fuelportion.Add(float.Parse((string)cfg.GetValue("part", "fuelportion" + i)));
             }
         }
+    }
+    public void UpdateCollisionShape()
+    {
+        RemoveShapeOwner(0);
+        CreateShapeOwner(this);
+        this.ShapeOwnerAddShape(0, mesh.Mesh.CreateTrimeshShape());
     }
 }
