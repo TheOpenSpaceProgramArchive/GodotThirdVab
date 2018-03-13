@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planet", "Planet.csproj", "{666D0833-D6DC-451E-96A7-FFE224B9434B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	Release|Any CPU = Release|Any CPU
+	Tools|Any CPU = Tools|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{666D0833-D6DC-451E-96A7-FFE224B9434B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666D0833-D6DC-451E-96A7-FFE224B9434B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666D0833-D6DC-451E-96A7-FFE224B9434B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666D0833-D6DC-451E-96A7-FFE224B9434B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{666D0833-D6DC-451E-96A7-FFE224B9434B}.Tools|Any CPU.ActiveCfg = Tools|Any CPU
+		{666D0833-D6DC-451E-96A7-FFE224B9434B}.Tools|Any CPU.Build.0 = Tools|Any CPU
+	EndGlobalSection
+EndGlobal
