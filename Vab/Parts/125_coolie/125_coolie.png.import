@@ -2,12 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/125_coolie.png-fc2be8430b146881911b6aebe20a07a3.s3tc.stex"
-path.etc2="res://.import/125_coolie.png-fc2be8430b146881911b6aebe20a07a3.etc2.stex"
+path.s3tc="res://.import/125_coolie.png-b593a3e4358ca44c16faa6860fc7cea8.s3tc.stex"
+path.etc2="res://.import/125_coolie.png-b593a3e4358ca44c16faa6860fc7cea8.etc2.stex"
 
 [deps]
 
+source_file="res://Parts/125_coolie/125_coolie.png"
 source_md5="4f6b6f31ff5f2e9847e0ac489a52fc43"
+
+dest_files=[ "res://.import/125_coolie.png-b593a3e4358ca44c16faa6860fc7cea8.s3tc.stex", "res://.import/125_coolie.png-b593a3e4358ca44c16faa6860fc7cea8.etc2.stex" ]
+dest_md5="03ccd763407bf212138cdaadd96f0e3c"
 
 [params]
 

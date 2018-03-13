@@ -6,7 +6,11 @@ path="res://.import/Separator.png-c7ee4b0fe37053cb16ea448a40208b56.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Separator.png"
 source_md5="486b1a688a8104e9ad8965dc6279b517"
+
+dest_files=[ "res://.import/Separator.png-c7ee4b0fe37053cb16ea448a40208b56.stex" ]
+dest_md5="62b602af6f4ca5d3a473ced3a2e9d1f3"
 
 [params]
 

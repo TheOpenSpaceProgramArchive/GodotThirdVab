@@ -2,16 +2,21 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/engine_125_coolie.obj-6b09c3afe93e0ffbc842b02936804fee.scn"
+path="res://.import/engine_125_coolie.obj-30fa793abb6e1a5b8c523fb2f2d871e7.scn"
 
 [deps]
 
-source_md5="d75dc73e7ad701c6ade82aef57dd8bd9"
+source_file="res://Parts/125_coolie/engine_125_coolie.obj"
+source_md5="df5eb2dc9ca50aa4aea349f88049a017"
+
+dest_files=[ "res://.import/engine_125_coolie.obj-30fa793abb6e1a5b8c523fb2f2d871e7.scn" ]
+dest_md5="16ee6baf064efc0bf35f5d9ef3f57c96"
 
 [params]
 
 nodes/root_type="Spatial"
 nodes/root_name="Scene Root"
+nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
 materials/location=1
@@ -21,11 +26,13 @@ meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0
+meshes/lightmap_texel_size=0.1
 external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15
 animation/filter_script=""
 animation/storage=false
+animation/keep_custom_tracks=false
 animation/optimizer/enabled=true
 animation/optimizer/max_linear_error=0.05
 animation/optimizer/max_angular_error=0.01

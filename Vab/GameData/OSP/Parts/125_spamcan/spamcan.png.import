@@ -7,7 +7,11 @@ path.etc2="res://.import/spamcan.png-3332f58ee81eedf1aec9aae128d876bf.etc2.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Parts/125_spamcan/spamcan.png"
 source_md5="b3210ad22c23f9b600b7cf8e6c36463b"
+
+dest_files=[ "res://.import/spamcan.png-3332f58ee81eedf1aec9aae128d876bf.s3tc.stex", "res://.import/spamcan.png-3332f58ee81eedf1aec9aae128d876bf.etc2.stex" ]
+dest_md5="c7a22b025f4711a36619faf118691dc2"
 
 [params]
 

@@ -6,7 +6,11 @@ path="res://.import/Controll.png-8fc0c4e470d5dcd7c30e595892ef32c3.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Controll.png"
 source_md5="480aec06b43c65db686f604889708b67"
+
+dest_files=[ "res://.import/Controll.png-8fc0c4e470d5dcd7c30e595892ef32c3.stex" ]
+dest_md5="cc67948b5c9a5ab4aaa9bafe81cd593c"
 
 [params]
 

@@ -6,7 +6,11 @@ path="res://.import/tank_125_2_uv.png-d20d4ff609139c3a0618dc8102e7f858.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Parts/tank_125_2/tank_125_2_uv.png"
 source_md5="8e1dcd3502ed06fb20d3fb4ad72c7ca8"
+
+dest_files=[ "res://.import/tank_125_2_uv.png-d20d4ff609139c3a0618dc8102e7f858.stex" ]
+dest_md5="2203f985e98be4482f7b1fa3a42a45f2"
 
 [params]
 

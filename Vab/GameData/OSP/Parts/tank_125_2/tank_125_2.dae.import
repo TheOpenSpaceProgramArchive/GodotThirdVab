@@ -6,12 +6,17 @@ path="res://.import/tank_125_2.dae-3003c94439c94986f6043e15b56e4df6.scn"
 
 [deps]
 
+source_file="res://GameData/OSP/Parts/tank_125_2/tank_125_2.dae"
 source_md5="e1e2ddfe8f07dc185072b199ba794f22"
+
+dest_files=[ "res://.import/tank_125_2.dae-3003c94439c94986f6043e15b56e4df6.scn" ]
+dest_md5="d7e80b185ed83e66b54239f1ddeb9bc2"
 
 [params]
 
 nodes/root_type="Spatial"
 nodes/root_name="Scene Root"
+nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
 materials/location=1
@@ -21,11 +26,13 @@ meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0
+meshes/lightmap_texel_size=0.1
 external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15
 animation/filter_script=""
 animation/storage=false
+animation/keep_custom_tracks=false
 animation/optimizer/enabled=true
 animation/optimizer/max_linear_error=0.05
 animation/optimizer/max_angular_error=0.01

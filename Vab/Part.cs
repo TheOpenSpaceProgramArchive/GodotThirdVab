@@ -9,17 +9,21 @@ public class Part : RigidBody
     public float mass = 1;
 
     [Export]
-    public string category;
+    public string category = "science";
     [Export]
     public string type;
     [Export]
-    public string icontexturelocation;
+    public string icontexturelocation = "Parts/125_coolie/125_coolie.png";
+    [Export]
+    public Texture iconTexture;
+    [Export]
+    public Vector3[] connections;
     [Export]
     public Vector3 connection0;
     [Export]
     public Vector3 connection1;
 
-    List<Vector3> connections =new List<Vector3>();
+    List<Vector3> connectionlist =new List<Vector3>();
     #endregion
 
 

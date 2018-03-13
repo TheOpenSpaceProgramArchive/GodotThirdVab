@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/125_probe_c64.png-10fcffca2152b605523d8dc73ded2a02.stex"
+path="res://.import/125_probe_c64.png-7dc8d31b84af920b250872d65809d78a.stex"
 
 [deps]
 
+source_file="res://Parts/125_probe_c64/125_probe_c64.png"
 source_md5="efed7a905a341b1d8e9407f1b366579b"
+
+dest_files=[ "res://.import/125_probe_c64.png-7dc8d31b84af920b250872d65809d78a.stex" ]
+dest_md5="826930083e9e8353b54cbd945d20ba5d"
 
 [params]
 

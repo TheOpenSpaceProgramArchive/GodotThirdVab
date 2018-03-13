@@ -6,7 +6,11 @@ path="res://.import/Structural.png-aaec4cbd731b24972d8f853f5021ee1a.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Structural.png"
 source_md5="dfbdc3edf7a15c00aee5331943222348"
+
+dest_files=[ "res://.import/Structural.png-aaec4cbd731b24972d8f853f5021ee1a.stex" ]
+dest_md5="cd78fd6bf29d4736304bc4c6c9230276"
 
 [params]
 

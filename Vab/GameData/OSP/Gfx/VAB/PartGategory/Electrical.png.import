@@ -6,7 +6,11 @@ path="res://.import/Electrical.png-f402a1fbb513a7259ac8a3a0ab3cfe70.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Electrical.png"
 source_md5="184660e180b2c8f421334b55bfd08c6c"
+
+dest_files=[ "res://.import/Electrical.png-f402a1fbb513a7259ac8a3a0ab3cfe70.stex" ]
+dest_md5="ab42b6ef73942d15621912d0ee794f7f"
 
 [params]
 

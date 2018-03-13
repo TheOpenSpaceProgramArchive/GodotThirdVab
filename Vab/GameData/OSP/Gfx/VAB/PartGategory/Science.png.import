@@ -6,7 +6,11 @@ path="res://.import/Science.png-6875f7918552fe22468151ca486b2f71.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Science.png"
 source_md5="9ee3ca8169bf8b5e69ae4fd8954cc616"
+
+dest_files=[ "res://.import/Science.png-6875f7918552fe22468151ca486b2f71.stex" ]
+dest_md5="ac770f502b432f07b16309fdd41166ff"
 
 [params]
 

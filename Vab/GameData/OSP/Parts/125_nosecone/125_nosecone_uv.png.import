@@ -6,7 +6,11 @@ path="res://.import/125_nosecone_uv.png-50a0c929439a54aa1aa3c5d9a062776e.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Parts/125_nosecone/125_nosecone_uv.png"
 source_md5="15f9bd8236db0d3e6c7295696f0bce0e"
+
+dest_files=[ "res://.import/125_nosecone_uv.png-50a0c929439a54aa1aa3c5d9a062776e.stex" ]
+dest_md5="48c5df6a579c712388bcac768d35e178"
 
 [params]
 

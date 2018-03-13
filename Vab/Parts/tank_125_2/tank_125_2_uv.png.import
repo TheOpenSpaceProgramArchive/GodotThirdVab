@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tank_125_2_uv.png-d20d4ff609139c3a0618dc8102e7f858.stex"
+path="res://.import/tank_125_2_uv.png-8d00fb55c39eaf02538d0bc33435c8e8.stex"
 
 [deps]
 
+source_file="res://Parts/tank_125_2/tank_125_2_uv.png"
 source_md5="8e1dcd3502ed06fb20d3fb4ad72c7ca8"
+
+dest_files=[ "res://.import/tank_125_2_uv.png-8d00fb55c39eaf02538d0bc33435c8e8.stex" ]
+dest_md5="2203f985e98be4482f7b1fa3a42a45f2"
 
 [params]
 

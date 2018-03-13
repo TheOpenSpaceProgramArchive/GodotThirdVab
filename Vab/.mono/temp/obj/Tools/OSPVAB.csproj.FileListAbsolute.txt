@@ -1,0 +1,5 @@
+C:\Godot\Games\GodotThirdVab\Vab\.mono\temp\bin\Tools\OSPVAB.dll
+C:\Godot\Games\GodotThirdVab\Vab\.mono\temp\bin\Tools\OSPVAB.pdb
+C:\Godot\Games\GodotThirdVab\Vab\.mono\temp\obj\Tools\OSPVAB.csprojResolveAssemblyReference.cache
+C:\Godot\Games\GodotThirdVab\Vab\.mono\temp\obj\Tools\OSPVAB.dll
+C:\Godot\Games\GodotThirdVab\Vab\.mono\temp\obj\Tools\OSPVAB.pdb

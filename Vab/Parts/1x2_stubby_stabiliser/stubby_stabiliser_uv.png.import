@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stubby_stabiliser_uv.png-5a16842409ad77a72484503a201ebf85.stex"
+path="res://.import/stubby_stabiliser_uv.png-e393faf0ef65676ea5138c3dcf21a278.stex"
 
 [deps]
 
+source_file="res://Parts/1x2_stubby_stabiliser/stubby_stabiliser_uv.png"
 source_md5="7afeeff66480f961769572462fa1fcc1"
+
+dest_files=[ "res://.import/stubby_stabiliser_uv.png-e393faf0ef65676ea5138c3dcf21a278.stex" ]
+dest_md5="4c3fedc1419a74590607e252717cf8d1"
 
 [params]
 

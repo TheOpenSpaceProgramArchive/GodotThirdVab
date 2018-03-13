@@ -6,7 +6,11 @@ path="res://.import/Communication.png-5fd7b177da1b40b0deab5741b207ee97.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Communication.png"
 source_md5="d8f38ea69956cbd04a65aaaeacc25b59"
+
+dest_files=[ "res://.import/Communication.png-5fd7b177da1b40b0deab5741b207ee97.stex" ]
+dest_md5="8f3df825aef5a275e398b19a900668cc"
 
 [params]
 

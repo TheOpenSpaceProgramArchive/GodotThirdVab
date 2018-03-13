@@ -6,7 +6,11 @@ path="res://.import/125_hogshead.png-11dd68728553bb22b705a0fba6df3af8.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Parts/125_hogshead/125_hogshead.png"
 source_md5="a4b833364585dd306a23b71d050ececb"
+
+dest_files=[ "res://.import/125_hogshead.png-11dd68728553bb22b705a0fba6df3af8.stex" ]
+dest_md5="89cdf86f958114b04fda5ee9f8771654"
 
 [params]
 

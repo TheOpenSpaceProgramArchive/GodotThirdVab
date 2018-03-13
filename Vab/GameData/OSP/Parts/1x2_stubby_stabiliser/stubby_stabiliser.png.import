@@ -6,7 +6,11 @@ path="res://.import/stubby_stabiliser.png-63c41e22f0ce4324f35321527dee26ca.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Parts/1x2_stubby_stabiliser/stubby_stabiliser.png"
 source_md5="a74eb4131184a3e2061c393bd395bc9a"
+
+dest_files=[ "res://.import/stubby_stabiliser.png-63c41e22f0ce4324f35321527dee26ca.stex" ]
+dest_md5="6886133524d6e99a6722ddc09437f505"
 
 [params]
 

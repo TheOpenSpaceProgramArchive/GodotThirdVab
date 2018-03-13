@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/125_decoupler.png-a89ef40cccae3b298e23defb46bbc433.stex"
+path="res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.stex"
 
 [deps]
 
+source_file="res://Parts/125_decoupler/125_decoupler.png"
 source_md5="bada225c4e7cc1f1980ce4df0dad8cc4"
+
+dest_files=[ "res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.stex" ]
+dest_md5="d542bd8a3c9bcd8368c2ac8d37669ae7"
 
 [params]
 

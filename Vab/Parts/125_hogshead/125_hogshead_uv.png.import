@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/125_hogshead_uv.png-1133047f623d77c32a76cd1631a116ad.stex"
+path="res://.import/125_hogshead_uv.png-225ec7702691169e6998aac6cb70a799.stex"
 
 [deps]
 
+source_file="res://Parts/125_hogshead/125_hogshead_uv.png"
 source_md5="96f72670a6298956c30e7fb8e9b75f04"
+
+dest_files=[ "res://.import/125_hogshead_uv.png-225ec7702691169e6998aac6cb70a799.stex" ]
+dest_md5="40bd5a1722f62ef91bf15fbfb6c68caa"
 
 [params]
 

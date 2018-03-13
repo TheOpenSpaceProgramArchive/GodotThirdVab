@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/proceduraltankicon.png-cb76f49c0642e2829adfbb2888fb1574.stex"
+path="res://.import/proceduraltankicon.png-9aa4ed5e96fe6bf482d15dbc664af8cc.stex"
 
 [deps]
 
+source_file="res://Parts/Procedural/proceduraltankicon.png"
 source_md5="e3ca5050d48d1f7e755a821c8d112046"
+
+dest_files=[ "res://.import/proceduraltankicon.png-9aa4ed5e96fe6bf482d15dbc664af8cc.stex" ]
+dest_md5="3b9d6ebb93780207f6057be6d7f27f52"
 
 [params]
 

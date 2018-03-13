@@ -4,22 +4,23 @@ using System.Collections.Generic;
 
 public class PartSelection : Panel
 {
+    /*
     const string path = "res://GameData";
     List<string> partlist = new List<string>();//list of partconfig paths
     List<string> fuellist = new List<string>();
-    
+    */
     public override void _Ready()
     {
         VAB vab = (VAB)GetNode("/root/VAB");
-        //FindAllFiles(path);
         Node parts = (Node)GetNode("/root/VAB/Parts");
 
         foreach(Part part in parts.GetChildren())
         {
             part.Translation += new Vector3(0,1000,0);//get it out of sight
+            Console.WriteLine("Part found");
         }
     }
-
+    /*
     public void FindAllFiles(string path)//find all cfg files inside GameData/modname/
     {
         Directory dir = new Directory();
@@ -73,6 +74,7 @@ public class PartSelection : Panel
             vab.fuels.Add(fuel);
         }
     }
+    */
 
     //show only parts from the chosen category
     private void UpdatePartGrid(string category)
@@ -80,15 +82,15 @@ public class PartSelection : Panel
         Node container = GetNode("/root/VAB/CanvasLayer/LeftPanel/PartSelection/PartGrid");
         foreach (Node child in container.GetChildren())
         {
-            child.QueueFree();//remove old buttons
+            child.QueueFree();//remove old parts from list
         }
         Node parts = (Node)GetNode("/root/VAB/Parts");
         foreach (Part part in parts.GetChildren())
         {
             if (part.category == category)
             {
+                Console.WriteLine("asfdafa");
                 TextureButton partnode = new TextureButton();
-                //partnode.SetName(path);
                 partnode.SetNormalTexture((Texture)ResourceLoader.Load(part.icontexturelocation));
                 partnode.SetExpand(true);
                 partnode.SetCustomMinimumSize(new Vector2(50, 50));

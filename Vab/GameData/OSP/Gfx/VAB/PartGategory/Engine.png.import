@@ -6,7 +6,11 @@ path="res://.import/Engine.png-b6200f9d5ac758c4ec5c63bef1d37cc0.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Engine.png"
 source_md5="f0b2dafcbf0a7b6bd3ac46ece4ec72ef"
+
+dest_files=[ "res://.import/Engine.png-b6200f9d5ac758c4ec5c63bef1d37cc0.stex" ]
+dest_md5="587e33f4757b02a483355d441bf55f2d"
 
 [params]
 

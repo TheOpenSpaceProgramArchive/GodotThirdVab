@@ -6,7 +6,11 @@ path="res://.import/Aerodynamics.png-a00bb6b966b79cc2ce8afc17aa2357fa.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Aerodynamics.png"
 source_md5="9dff82cb31bd0bbdd5abaa218d4ba84c"
+
+dest_files=[ "res://.import/Aerodynamics.png-a00bb6b966b79cc2ce8afc17aa2357fa.stex" ]
+dest_md5="a8405a9af64617497f363da29e3c821b"
 
 [params]
 

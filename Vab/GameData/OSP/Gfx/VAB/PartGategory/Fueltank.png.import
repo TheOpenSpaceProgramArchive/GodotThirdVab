@@ -6,7 +6,11 @@ path="res://.import/Fueltank.png-fa2a3e0c205ad89afe5bad415b477420.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Fueltank.png"
 source_md5="e86ec2f3229d06d165de22dbb257bb77"
+
+dest_files=[ "res://.import/Fueltank.png-fa2a3e0c205ad89afe5bad415b477420.stex" ]
+dest_md5="4c69d57ab67e93cc9d60dda968cf10a1"
 
 [params]
 

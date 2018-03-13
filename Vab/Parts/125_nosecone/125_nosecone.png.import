@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/125_nosecone.png-aafa080e824e2c2b52c18ae93c7c839d.stex"
+path="res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.stex"
 
 [deps]
 
+source_file="res://Parts/125_nosecone/125_nosecone.png"
 source_md5="107d410ad0e207db29af8e9376e5a235"
+
+dest_files=[ "res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.stex" ]
+dest_md5="e707e02f0e9b48555bef773ce88da556"
 
 [params]
 

@@ -6,7 +6,11 @@ path="res://.import/Command.png-c1c7d7d84b85a7f3f166be08e9aa490b.stex"
 
 [deps]
 
+source_file="res://GameData/OSP/Gfx/VAB/PartGategory/Command.png"
 source_md5="a484c67523b54447e56e8cdf9990b729"
+
+dest_files=[ "res://.import/Command.png-c1c7d7d84b85a7f3f166be08e9aa490b.stex" ]
+dest_md5="25a2e586499dac0bfff977ff8367d2cd"
 
 [params]
 

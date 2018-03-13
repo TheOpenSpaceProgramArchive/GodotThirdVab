@@ -2,12 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/engine_125_coolie_uv.png-33e3cc3ada4e41478fe50b6e8eb62ead.s3tc.stex"
-path.etc2="res://.import/engine_125_coolie_uv.png-33e3cc3ada4e41478fe50b6e8eb62ead.etc2.stex"
+path.s3tc="res://.import/engine_125_coolie_uv.png-e2193128cd67b054bc34a722c53265f2.s3tc.stex"
+path.etc2="res://.import/engine_125_coolie_uv.png-e2193128cd67b054bc34a722c53265f2.etc2.stex"
 
 [deps]
 
+source_file="res://Parts/125_coolie/engine_125_coolie_uv.png"
 source_md5="04757a4bc4bd97a071124841b46d50ec"
+
+dest_files=[ "res://.import/engine_125_coolie_uv.png-e2193128cd67b054bc34a722c53265f2.s3tc.stex", "res://.import/engine_125_coolie_uv.png-e2193128cd67b054bc34a722c53265f2.etc2.stex" ]
+dest_md5="d1ffeed435c3c8cb69a72b877160fa7e"
 
 [params]
 
