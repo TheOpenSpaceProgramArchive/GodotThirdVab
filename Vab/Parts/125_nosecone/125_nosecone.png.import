@@ -2,31 +2,32 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.stex"
+path.s3tc="res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.s3tc.stex"
+path.etc2="res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.etc2.stex"
 
 [deps]
 
 source_file="res://Parts/125_nosecone/125_nosecone.png"
 source_md5="107d410ad0e207db29af8e9376e5a235"
 
-dest_files=[ "res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.stex" ]
-dest_md5="e707e02f0e9b48555bef773ce88da556"
+dest_files=[ "res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.s3tc.stex", "res://.import/125_nosecone.png-fd731be1188c3e5a81dd421e4f00bbed.etc2.stex" ]
+dest_md5="1b442d6b57a9c48c510669a1819dc89a"
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

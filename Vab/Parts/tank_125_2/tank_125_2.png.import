@@ -2,31 +2,32 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tank_125_2.png-657c663b3ef1394660597074ea55f1ef.stex"
+path.s3tc="res://.import/tank_125_2.png-657c663b3ef1394660597074ea55f1ef.s3tc.stex"
+path.etc2="res://.import/tank_125_2.png-657c663b3ef1394660597074ea55f1ef.etc2.stex"
 
 [deps]
 
 source_file="res://Parts/tank_125_2/tank_125_2.png"
 source_md5="9322e96bad60bb2014c86bd2f35fb01d"
 
-dest_files=[ "res://.import/tank_125_2.png-657c663b3ef1394660597074ea55f1ef.stex" ]
-dest_md5="4c438fd1c7d93ddce7ce655189fb16d6"
+dest_files=[ "res://.import/tank_125_2.png-657c663b3ef1394660597074ea55f1ef.s3tc.stex", "res://.import/tank_125_2.png-657c663b3ef1394660597074ea55f1ef.etc2.stex" ]
+dest_md5="ff7b1fc23359ff9303ebb71ee6661a95"
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
