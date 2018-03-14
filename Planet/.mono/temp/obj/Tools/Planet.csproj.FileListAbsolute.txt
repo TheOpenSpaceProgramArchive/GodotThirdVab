@@ -1,0 +1,5 @@
+C:\Godot\Games\GodotThirdVab\Planet\.mono\temp\bin\Tools\Planet.dll
+C:\Godot\Games\GodotThirdVab\Planet\.mono\temp\bin\Tools\Planet.pdb
+C:\Godot\Games\GodotThirdVab\Planet\.mono\temp\obj\Tools\Planet.csprojResolveAssemblyReference.cache
+C:\Godot\Games\GodotThirdVab\Planet\.mono\temp\obj\Tools\Planet.dll
+C:\Godot\Games\GodotThirdVab\Planet\.mono\temp\obj\Tools\Planet.pdb

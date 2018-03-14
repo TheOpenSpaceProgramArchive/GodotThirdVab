@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://VAB.cs" type="Script" id=1]
 [ext_resource path="res://PartSelection.cs" type="Script" id=2]
@@ -21,13 +21,16 @@
 [ext_resource path="res://CameraVAB.cs" type="Script" id=19]
 [ext_resource path="res://MouseRay.cs" type="Script" id=20]
 [ext_resource path="res://Part.cs" type="Script" id=21]
-[ext_resource path="res://Parts/125_coolie/Material_001.material" type="Material" id=22]
-[ext_resource path="res://Parts/125_decoupler/Material.material" type="Material" id=23]
-[ext_resource path="res://Parts/125_nosecone/125_nosecone.obj" type="PackedScene" id=24]
-[ext_resource path="res://Parts/125_probe_c64/125_probe_c64.obj" type="PackedScene" id=25]
-[ext_resource path="res://Parts/125_spamcan/125_spamcan.obj" type="PackedScene" id=26]
-[ext_resource path="res://Parts/tank_125_2/tank_125_2.obj" type="PackedScene" id=27]
-[ext_resource path="res://Parts/tank_125_4/tank_125_4.obj" type="PackedScene" id=28]
+[ext_resource path="res://Parts/125_coolie/125_coolie.png" type="Texture" id=22]
+[ext_resource path="res://Parts/125_coolie/Material_001.material" type="Material" id=23]
+[ext_resource path="res://Parts/125_decoupler/125_decoupler.png" type="Texture" id=24]
+[ext_resource path="res://Parts/125_decoupler/Material.material" type="Material" id=25]
+[ext_resource path="res://Parts/125_nosecone/125_nosecone.obj" type="PackedScene" id=26]
+[ext_resource path="res://Parts/125_probe_c64/125_probe_c64.obj" type="PackedScene" id=27]
+[ext_resource path="res://Parts/125_spamcan/125_spamcan.obj" type="PackedScene" id=28]
+[ext_resource path="res://Parts/tank_125_2/tank_125_2.obj" type="PackedScene" id=29]
+[ext_resource path="res://Parts/tank_125_4/tank_125_4.obj" type="PackedScene" id=30]
+[ext_resource path="res://Parts/Procedural/proceduraltankicon.png" type="Texture" id=31]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 
@@ -45,7 +48,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98071,
 "index_count": 12720,
-"material": ExtResource( 22 ),
+"material": ExtResource( 23 ),
 "name": "Material",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -64,7 +67,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98071,
 "index_count": 2304,
-"material": ExtResource( 23 ),
+"material": ExtResource( 25 ),
 "name": "Material",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -1574,16 +1577,15 @@ _sections_unfolded = [ "Angular", "Axis Lock", "Collision", "Linear", "Pause", "
 mass = 1.0
 category = "engine"
 type = "Null"
-icontexturelocation = "Parts/125_coolie/125_coolie.png"
-connection0 = Vector3( 0, 0.5, 0 )
-connection1 = Vector3( 0, -0.5, 0 )
+iconTexture = ExtResource( 22 )
+connections = PoolVector3Array( 0, 0.5, 0, 0, -0.5, 0 )
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 
@@ -1607,7 +1609,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 22 )
+material/0 = ExtResource( 23 )
 _sections_unfolded = [ "material" ]
 
 [node name="decoupler" type="RigidBody" parent="Parts" index="1"]
@@ -1639,26 +1641,26 @@ linear_damp = -1.0
 angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
 script = ExtResource( 21 )
+_sections_unfolded = [ "Visibility" ]
 mass = 1.0
-category = "command"
+category = "separator"
 type = null
-icontexturelocation = "Parts/125_coolie/125_coolie.png"
-connection0 = Vector3( 0, 0, 0 )
-connection1 = Vector3( 0, 0, 0 )
+iconTexture = ExtResource( 24 )
+connections = PoolVector3Array( 0, 0.1, 0, 0, 0.1, 0 )
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 
 [node name="Torus" type="MeshInstance" parent="Parts/decoupler" index="0"]
 
 layers = 1
-material_override = ExtResource( 23 )
+material_override = ExtResource( 25 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -1709,20 +1711,19 @@ script = ExtResource( 21 )
 mass = 1.0
 category = "command"
 type = null
-icontexturelocation = "Parts/125_coolie/125_coolie.png"
-connection0 = Vector3( 0, 0, 0 )
-connection1 = Vector3( 0, 0, 0 )
+iconTexture = null
+connections = null
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 
-[node name="Scene Root" parent="Parts/nosecone" index="0" instance=ExtResource( 24 )]
+[node name="Scene Root" parent="Parts/nosecone" index="0" instance=ExtResource( 26 )]
 
 [node name="probe" type="RigidBody" parent="Parts" index="3"]
 
@@ -1757,20 +1758,19 @@ script = ExtResource( 21 )
 mass = 1.0
 category = "command"
 type = null
-icontexturelocation = "Parts/125_coolie/125_coolie.png"
-connection0 = Vector3( 0, 0, 0 )
-connection1 = Vector3( 0, 0, 0 )
+iconTexture = null
+connections = null
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 
-[node name="Scene Root" parent="Parts/probe" index="0" instance=ExtResource( 25 )]
+[node name="Scene Root" parent="Parts/probe" index="0" instance=ExtResource( 27 )]
 
 [node name="spamcan" type="RigidBody" parent="Parts" index="4"]
 
@@ -1804,20 +1804,19 @@ script = ExtResource( 21 )
 mass = 1.0
 category = "command"
 type = null
-icontexturelocation = "Parts/125_coolie/125_coolie.png"
-connection0 = Vector3( 0, 0, 0 )
-connection1 = Vector3( 0, 0, 0 )
+iconTexture = null
+connections = null
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 
-[node name="Scene Root" parent="Parts/spamcan" index="0" instance=ExtResource( 26 )]
+[node name="Scene Root" parent="Parts/spamcan" index="0" instance=ExtResource( 28 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.28427, 0, 0 )
 
@@ -1853,20 +1852,19 @@ script = ExtResource( 21 )
 mass = 1.0
 category = "command"
 type = null
-icontexturelocation = "Parts/125_coolie/125_coolie.png"
-connection0 = Vector3( 0, 0, 0 )
-connection1 = Vector3( 0, 0, 0 )
+iconTexture = null
+connections = null
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 
-[node name="Scene Root" parent="Parts/tank_125_2" index="0" instance=ExtResource( 27 )]
+[node name="Scene Root" parent="Parts/tank_125_2" index="0" instance=ExtResource( 29 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4711, 0, 0 )
 
@@ -1902,20 +1900,19 @@ script = ExtResource( 21 )
 mass = 1.0
 category = "command"
 type = null
-icontexturelocation = "Parts/125_coolie/125_coolie.png"
-connection0 = Vector3( 0, 0, 0 )
-connection1 = Vector3( 0, 0, 0 )
+iconTexture = null
+connections = null
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 
-[node name="Scene Root" parent="Parts/tank_125_4" index="0" instance=ExtResource( 28 )]
+[node name="Scene Root" parent="Parts/tank_125_4" index="0" instance=ExtResource( 30 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.709, 0, 0 )
 
@@ -1951,16 +1948,15 @@ script = ExtResource( 21 )
 mass = 1.0
 category = "fueltank"
 type = "proceduraltank"
-icontexturelocation = "Parts/Procedural/proceduraltankicon.png"
-connection0 = Vector3( 0, 0, 0 )
-connection1 = Vector3( 0, 0, 0 )
+iconTexture = ExtResource( 31 )
+connections = null
 volume = 0.0
 seaIsp = 0.0
 VacIsp = 0.0
 minthrust = 0.0
 maxthrust = 0.0
-fuel0 = null
-fuelportion0 = 0.0
+fuel = null
+fuelportion = null
 fuel1 = null
 fuelportion1 = 0.0
 

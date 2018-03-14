@@ -13,17 +13,11 @@ public class Part : RigidBody
     [Export]
     public string type;
     [Export]
-    public string icontexturelocation = "Parts/125_coolie/125_coolie.png";
-    [Export]
     public Texture iconTexture;
     [Export]
     public Vector3[] connections;
-    [Export]
-    public Vector3 connection0;
-    [Export]
-    public Vector3 connection1;
 
-    List<Vector3> connectionlist =new List<Vector3>();
+    public List<Vector3> connectionList =new List<Vector3>();
     #endregion
 
 
@@ -46,23 +40,23 @@ public class Part : RigidBody
     public float currentthrust;
 
     [Export]
-    public string fuel0;
+    public string[] fuel;
     [Export]
-    public float fuelportion0;
+    public float[] fuelportion;
 
     [Export]
     public string fuel1;
     [Export]
     public float fuelportion1;
 
-    public List<string> fuels = new List<string>();
-    public List<float> fuelportion = new List<float>();
+    public List<string> fuelList = new List<string>();
+    public List<float> fuelportionList = new List<float>();
     #endregion
 
     public override void _Ready()
     {
     }
-
+    /*
     //create part in vab
     public void CreatePart(string cfgPath)
     {
@@ -82,7 +76,7 @@ public class Part : RigidBody
             float x = (int)cfg.GetValue("part", "connectionX" + i);
             float y = (int)cfg.GetValue("part", "connectionY" + i);
             float z = (int)cfg.GetValue("part", "connectionZ" + i);
-            connections.Add(new Vector3(x/100, y/100, z/100));
+            connectionlist.Add(new Vector3(x/100, y/100, z/100));
         }
         SetMode(ModeEnum.Static);//StaticBody
 
@@ -131,6 +125,7 @@ public class Part : RigidBody
             }
         }
     }
+    */
     public void UpdateCollisionShape()
     {
         RemoveShapeOwner(0);

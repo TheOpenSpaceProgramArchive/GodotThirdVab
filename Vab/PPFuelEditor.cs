@@ -40,8 +40,6 @@ public class PPFuelEditor : WindowDialog
 
     private void OnSliderChanged()
     {
-        /* something broken in here
-        
         #region updatelabels
         Label trcur = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueCurr");
         Label trmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueMin");
@@ -67,6 +65,7 @@ public class PPFuelEditor : WindowDialog
         brmax.Text = bottomRadiusSlider.MaxValue.ToString() + " m";
         hmax.Text = heightSlider.MaxValue.ToString() + " m";
         #endregion
+
         #region updatemesh
         topRadius = topRadiusSlider.Value;
         bottomradius = bottomRadiusSlider.Value;
@@ -115,24 +114,20 @@ public class PPFuelEditor : WindowDialog
             st.AddVertex(StepToVector3(step + 1, topRadius, height / 2));
         }
         am = st.Commit(am);
+        //Mesh
         PartBeingEdited.mesh.SetMesh(am);
+        
+        //Collider
+        PartBeingEdited.ShapeOwnerClearShapes(0);
+        PartBeingEdited.ShapeOwnerAddShape(0,PartBeingEdited.mesh.Mesh.CreateTrimeshShape());
 
-        PartBeingEdited.UpdateCollisionShape();
-
+        //Connection points
+        PartBeingEdited.connectionList[0] = new Vector3(0, (height / 2) * 1, 0);
+        PartBeingEdited.connectionList[1] = new Vector3(0, (height / 2) * -1, 0);
         #endregion
 
-        int ymul = 1;
-        foreach (Node child in PartBeingEdited.GetChildren())
-        {
-            if(child.IsClass("Area"))
-            {
-                Area area = (Area)child;
-                Vector3 pos = new Vector3(0, (height/2)*ymul, 0);
-                area.SetTranslation(pos);
-                ymul *= -1;
-            }
-        }
 
+        #region volume
         Label volumelabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/VolumeLabel");
         Label drymasslabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/DryMassLabel");
 
@@ -141,13 +136,13 @@ public class PPFuelEditor : WindowDialog
 
         PartBeingEdited.mass = PartBeingEdited.volume * massMultiplier;
         drymasslabel.Text = ("Dry mass: " + PartBeingEdited.mass + " Kg");
+        #endregion
 
         #region fuel
         //find all engine parts
 
 
         #endregion
-        */
     }
 
     private Vector3 StepToVector3(int step, float radius, float h)

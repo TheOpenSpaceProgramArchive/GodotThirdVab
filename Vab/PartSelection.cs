@@ -17,7 +17,6 @@ public class PartSelection : Panel
         foreach(Part part in parts.GetChildren())
         {
             part.Translation += new Vector3(0,1000,0);//get it out of sight
-            Console.WriteLine("Part found");
         }
     }
     /*
@@ -89,9 +88,8 @@ public class PartSelection : Panel
         {
             if (part.category == category)
             {
-                Console.WriteLine("asfdafa");
                 TextureButton partnode = new TextureButton();
-                partnode.SetNormalTexture((Texture)ResourceLoader.Load(part.icontexturelocation));
+                partnode.SetNormalTexture(part.iconTexture);
                 partnode.SetExpand(true);
                 partnode.SetCustomMinimumSize(new Vector2(50, 50));
                 
@@ -111,21 +109,19 @@ public class PartSelection : Panel
         #region copyVariables
         part.category = referencepart.category;
         part.type = referencepart.type;
-        part.connection0 = referencepart.connection0;
-        part.connection1 = referencepart.connection1;
         part.volume = referencepart.volume;
         part.seaIsp = referencepart.seaIsp;
         part.VacIsp = referencepart.VacIsp;
         part.minthrust = referencepart.minthrust;
         part.maxthrust = referencepart.maxthrust;
-        part.fuel0 = referencepart.fuel0;
-        part.fuelportion0 = referencepart.fuelportion0;
+        //part.fuel0 = referencepart.fuel0;
+        //part.fuelportion0 = referencepart.fuelportion0;
         part.fuel1 = referencepart.fuel1;
         part.fuelportion1 = referencepart.fuelportion1;
         #endregion
 
 
-
+        /*
         foreach (Node child in part.GetChildren())
         {
             if (child.GetName() == "Scene Root")//imported mesh
@@ -134,8 +130,16 @@ public class PartSelection : Panel
                 part.ShapeOwnerAddShape(0, ((MeshInstance)child.GetChild(1)).Mesh.CreateTrimeshShape());
             }
         }
+        */
 
         #region connections
+
+        foreach (Vector3 connection in referencepart.connections)
+        {
+            part.connectionList.Add(connection);
+        }
+
+        /*
         if (part.connection0!=new Vector3(0,0,0))
         {
             ConnectionSphere connectionsphere = new ConnectionSphere();
@@ -156,8 +160,9 @@ public class PartSelection : Panel
             connectionsphere.SetTranslation(part.connection1);
             part.AddChild(connectionsphere);
         }
+        */
         #endregion
-
+    
         #region proceduraltank
         if (part.type == "proceduraltank")
         {
@@ -170,6 +175,7 @@ public class PartSelection : Panel
             //mesh.SetMaterialOverride(material);
             part.AddChild(part.mesh);
 
+            int i = part.CreateShapeOwner(part);
 
             PPFuelEditor window = (PPFuelEditor)GetNode("/root/VAB/CanvasLayer/PPFuelEditor");
             window.PartBeingEdited = part;

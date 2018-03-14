@@ -2,31 +2,32 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.stex"
+path.s3tc="res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.s3tc.stex"
+path.etc2="res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.etc2.stex"
 
 [deps]
 
 source_file="res://Parts/125_decoupler/125_decoupler.png"
 source_md5="bada225c4e7cc1f1980ce4df0dad8cc4"
 
-dest_files=[ "res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.stex" ]
-dest_md5="d542bd8a3c9bcd8368c2ac8d37669ae7"
+dest_files=[ "res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.s3tc.stex", "res://.import/125_decoupler.png-943d65d2bb61e8249b17fbcc3b94696b.etc2.stex" ]
+dest_md5="55ff7332946801b2d13d9db6719c08b6"
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
