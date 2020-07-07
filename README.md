@@ -1,6 +1,6 @@
 # GodotThirdVab
 
-Godot 3 project.
+Godot 3.2.2 project.
 
 To play:
 
