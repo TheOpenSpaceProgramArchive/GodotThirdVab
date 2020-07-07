@@ -3,262 +3,262 @@ using System;
 
 public class PPFuelEditor : WindowDialog
 {
-    public Part PartBeingEdited;
+	public Part PartBeingEdited;
 
-    float topRadius = 1;
-    float bottomradius = 1;
-    float height = 1;
-    int stepcount = 100;
+	float topRadius = 1;
+	float bottomradius = 1;
+	float height = 1;
+	int stepcount = 100;
 
-    float massMultiplier = 0.001f;//mass = volume*this
+	float massMultiplier = 0.001f;//mass = volume*this
 
-    HSlider topRadiusSlider;
-    HSlider bottomRadiusSlider;
-    HSlider heightSlider;
+	HSlider topRadiusSlider;
+	HSlider bottomRadiusSlider;
+	HSlider heightSlider;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 
-        topRadiusSlider = (HSlider)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/HSlider");
-        //topRadiusSlider.Connect("value_changed", this, "OnSliderChanged");
-        topRadiusSlider.SetStep(0.001f);
-        topRadiusSlider.SetMax(1);
-        topRadiusSlider.SetMin(0);
+		topRadiusSlider = (HSlider)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/HSlider");
+		//topRadiusSlider.Connect("value_changed", this, "OnSliderChanged");
+		topRadiusSlider.SetStep(0.001f);
+		topRadiusSlider.SetMax(1);
+		topRadiusSlider.SetMin(0);
 
-        bottomRadiusSlider = (HSlider)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/HSlider");
-        //bottomRadiusSlider.Connect("value_changed", this, "OnSliderChanged");
-        bottomRadiusSlider.SetStep(0.001f);
-        bottomRadiusSlider.SetMax(1);
-        bottomRadiusSlider.SetMin(0);
+		bottomRadiusSlider = (HSlider)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/HSlider");
+		//bottomRadiusSlider.Connect("value_changed", this, "OnSliderChanged");
+		bottomRadiusSlider.SetStep(0.001f);
+		bottomRadiusSlider.SetMax(1);
+		bottomRadiusSlider.SetMin(0);
 
-        heightSlider = (HSlider)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/HSlider");
-        //heightSlider.Connect("value_changed", this, "OnSliderChanged");
-        heightSlider.SetStep(0.001f);
-        heightSlider.SetMax(1);
-        heightSlider.SetMin(0);
-    }
+		heightSlider = (HSlider)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/HSlider");
+		//heightSlider.Connect("value_changed", this, "OnSliderChanged");
+		heightSlider.SetStep(0.001f);
+		heightSlider.SetMax(1);
+		heightSlider.SetMin(0);
+	}
 
-    private void OnSliderChanged()
-    {
-        #region updatelabels
-        Label trcur = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueCurr");
-        Label trmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueMin");
-        Label trmax = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueMax");
+	private void OnSliderChanged()
+	{
+		#region updatelabels
+		Label trcur = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueCurr");
+		Label trmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueMin");
+		Label trmax = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/TopRadiusPanel/ValueMax");
 
-        Label brcur = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/ValueCurr");
-        Label brmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/ValueMin");
-        Label brmax = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/ValueMax");
+		Label brcur = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/ValueCurr");
+		Label brmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/ValueMin");
+		Label brmax = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/BottomRadiusPanel/ValueMax");
 
-        Label hcur = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueCurr");
-        Label hmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueMin");
-        Label hmax = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueMax");
+		Label hcur = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueCurr");
+		Label hmin = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueMin");
+		Label hmax = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/HeightPanel/ValueMax");
 
-        trcur.Text = topRadiusSlider.Value.ToString() + " m";
-        brcur.Text = bottomRadiusSlider.Value.ToString() + " m";
-        hcur.Text = heightSlider.Value.ToString() + " m";
+		trcur.Text = topRadiusSlider.Value.ToString() + " m";
+		brcur.Text = bottomRadiusSlider.Value.ToString() + " m";
+		hcur.Text = heightSlider.Value.ToString() + " m";
 
-        trmin.Text = topRadiusSlider.MinValue.ToString() + " m";
-        brmin.Text = bottomRadiusSlider.MinValue.ToString() + " m";
-        hmin.Text = heightSlider.MinValue.ToString() + " m";
+		trmin.Text = topRadiusSlider.MinValue.ToString() + " m";
+		brmin.Text = bottomRadiusSlider.MinValue.ToString() + " m";
+		hmin.Text = heightSlider.MinValue.ToString() + " m";
 
-        trmax.Text = topRadiusSlider.MaxValue.ToString() + " m";
-        brmax.Text = bottomRadiusSlider.MaxValue.ToString() + " m";
-        hmax.Text = heightSlider.MaxValue.ToString() + " m";
-        #endregion
+		trmax.Text = topRadiusSlider.MaxValue.ToString() + " m";
+		brmax.Text = bottomRadiusSlider.MaxValue.ToString() + " m";
+		hmax.Text = heightSlider.MaxValue.ToString() + " m";
+		#endregion
 
-        #region updatemesh
-        topRadius = topRadiusSlider.Value;
-        bottomradius = bottomRadiusSlider.Value;
-        height = heightSlider.Value;
-        SurfaceTool st = new SurfaceTool();
-        ArrayMesh am;
+		#region updatemesh
+		topRadius = (float)topRadiusSlider.Value;
+		bottomradius = (float)bottomRadiusSlider.Value;
+		height = (float)heightSlider.Value;
+		SurfaceTool st = new SurfaceTool();
+		ArrayMesh am;
 
-        //top surface
-        st.Begin(Mesh.PrimitiveType.Triangles);
-        st.AddColor(new Color(1, 0, 0));
-        st.AddUv(new Vector2(0, 0));
-        for (int step = 0; step < stepcount; step++)
-        {
-            st.AddVertex(new Vector3(0, height / 2, 0));//center vertex
-            st.AddVertex(StepToVector3(step, topRadius, height / 2));
-            st.AddVertex(StepToVector3(step + 1, topRadius, height / 2));
-        }
-        am = st.Commit();
+		//top surface
+		st.Begin(Mesh.PrimitiveType.Triangles);
+		st.AddColor(new Color(1, 0, 0));
+		st.AddUv(new Vector2(0, 0));
+		for (int step = 0; step < stepcount; step++)
+		{
+			st.AddVertex(new Vector3(0, height / 2, 0));//center vertex
+			st.AddVertex(StepToVector3(step, topRadius, height / 2));
+			st.AddVertex(StepToVector3(step + 1, topRadius, height / 2));
+		}
+		am = st.Commit();
 
-        //bottom surface
-        st.Begin(Mesh.PrimitiveType.Triangles);
-        st.AddColor(new Color(1, 0, 0));
-        st.AddUv(new Vector2(0, 0));
-        for (int step = 0; step < stepcount; step++)
-        {
-            st.AddNormal(new Vector3(0, -1, 0));
-            st.AddVertex(new Vector3(0, -height / 2, 0));//center vertex
-            st.AddVertex(StepToVector3(step, bottomradius, -height / 2));
-            st.AddVertex(StepToVector3(step - 1, bottomradius, -height / 2));
-        }
-        st.GenerateNormals();
-        am = st.Commit(am);
+		//bottom surface
+		st.Begin(Mesh.PrimitiveType.Triangles);
+		st.AddColor(new Color(1, 0, 0));
+		st.AddUv(new Vector2(0, 0));
+		for (int step = 0; step < stepcount; step++)
+		{
+			st.AddNormal(new Vector3(0, -1, 0));
+			st.AddVertex(new Vector3(0, -height / 2, 0));//center vertex
+			st.AddVertex(StepToVector3(step, bottomradius, -height / 2));
+			st.AddVertex(StepToVector3(step - 1, bottomradius, -height / 2));
+		}
+		st.GenerateNormals();
+		am = st.Commit(am);
 
-        //side surface
-        st.Begin(Mesh.PrimitiveType.Triangles);
-        st.AddColor(new Color(1, 0, 0));
-        st.AddUv(new Vector2(0, 0));
-        for (int step = 0; step < stepcount; step++)
-        {
-            st.AddVertex(StepToVector3(step, topRadius, height / 2));
-            st.AddVertex(StepToVector3(step, bottomradius, -height / 2));
-            st.AddVertex(StepToVector3(step + 1, bottomradius, -height / 2));
+		//side surface
+		st.Begin(Mesh.PrimitiveType.Triangles);
+		st.AddColor(new Color(1, 0, 0));
+		st.AddUv(new Vector2(0, 0));
+		for (int step = 0; step < stepcount; step++)
+		{
+			st.AddVertex(StepToVector3(step, topRadius, height / 2));
+			st.AddVertex(StepToVector3(step, bottomradius, -height / 2));
+			st.AddVertex(StepToVector3(step + 1, bottomradius, -height / 2));
 
-            st.AddVertex(StepToVector3(step, topRadius, height / 2));
-            st.AddVertex(StepToVector3(step + 1, bottomradius, -height / 2));
-            st.AddVertex(StepToVector3(step + 1, topRadius, height / 2));
-        }
-        am = st.Commit(am);
-        //Mesh
-        PartBeingEdited.mesh.SetMesh(am);
-        
-        //Collider
-        PartBeingEdited.ShapeOwnerClearShapes(0);
-        PartBeingEdited.ShapeOwnerAddShape(0,PartBeingEdited.mesh.Mesh.CreateTrimeshShape());
+			st.AddVertex(StepToVector3(step, topRadius, height / 2));
+			st.AddVertex(StepToVector3(step + 1, bottomradius, -height / 2));
+			st.AddVertex(StepToVector3(step + 1, topRadius, height / 2));
+		}
+		am = st.Commit(am);
+		//Mesh
+		PartBeingEdited.mesh.SetMesh(am);
+		
+		//Collider
+		PartBeingEdited.ShapeOwnerClearShapes(0);
+		PartBeingEdited.ShapeOwnerAddShape(0,PartBeingEdited.mesh.Mesh.CreateTrimeshShape());
 
-        //Connection points
-        PartBeingEdited.connectionList[0] = new Vector3(0, (height / 2) * 1, 0);
-        PartBeingEdited.connectionList[1] = new Vector3(0, (height / 2) * -1, 0);
-        #endregion
-
-
-        #region volume
-        Label volumelabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/VolumeLabel");
-        Label drymasslabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/DryMassLabel");
-
-        PartBeingEdited.volume = (float)(Math.PI / 3) * (bottomradius * bottomradius + bottomradius * topRadius + topRadius * topRadius) * height;// V = 1/3 * PI * (r1^2+r1*r2+r2^2) * h
-        volumelabel.Text = "Volume: " + PartBeingEdited.volume+ " m\xB3";
-
-        PartBeingEdited.mass = PartBeingEdited.volume * massMultiplier;
-        drymasslabel.Text = ("Dry mass: " + PartBeingEdited.mass + " Kg");
-        #endregion
-
-        #region fuel
-        //find all engine parts
+		//Connection points
+		PartBeingEdited.connectionList[0] = new Vector3(0, (height / 2) * 1, 0);
+		PartBeingEdited.connectionList[1] = new Vector3(0, (height / 2) * -1, 0);
+		#endregion
 
 
-        #endregion
-    }
+		#region volume
+		Label volumelabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/VolumeLabel");
+		Label drymasslabel = (Label)GetNode("/root/VAB/CanvasLayer/PPFuelEditor/StatPanel/StatGrid/DryMassLabel");
 
-    private Vector3 StepToVector3(int step, float radius, float h)
-    {
-        float stepRadiaans = (float)(Math.PI * 2) / stepcount;
-        Vector3 vector = new Vector3(0, h, 0);
-        vector.x = (float)Math.Cos(stepRadiaans * step) * radius;
-        vector.z = (float)Math.Sin(stepRadiaans * step) * radius;
-        return vector;
-    }
+		PartBeingEdited.volume = (float)(Math.PI / 3) * (bottomradius * bottomradius + bottomradius * topRadius + topRadius * topRadius) * height;// V = 1/3 * PI * (r1^2+r1*r2+r2^2) * h
+		volumelabel.Text = "Volume: " + PartBeingEdited.volume+ " m\xB3";
 
+		PartBeingEdited.mass = PartBeingEdited.volume * massMultiplier;
+		drymasslabel.Text = ("Dry mass: " + PartBeingEdited.mass + " Kg");
+		#endregion
 
-    #region changeslidervalues
-
-    private void _on_Smaller0Top_pressed()
-    {
-        ChangeSlider(topRadiusSlider, -0.1f);
-    }
+		#region fuel
+		//find all engine parts
 
 
-    private void _on_Smaller1Top_pressed()
-    {
-        ChangeSlider(topRadiusSlider, -1f);
-    }
+		#endregion
+	}
+
+	private Vector3 StepToVector3(int step, float radius, float h)
+	{
+		float stepRadiaans = (float)(Math.PI * 2) / stepcount;
+		Vector3 vector = new Vector3(0, h, 0);
+		vector.x = (float)Math.Cos(stepRadiaans * step) * radius;
+		vector.z = (float)Math.Sin(stepRadiaans * step) * radius;
+		return vector;
+	}
 
 
-    private void _on_Larger0Top_pressed()
-    {
-        ChangeSlider(topRadiusSlider, 0.1f);
-    }
+	#region changeslidervalues
+
+	private void _on_Smaller0Top_pressed()
+	{
+		ChangeSlider(topRadiusSlider, -0.1f);
+	}
 
 
-    private void _on_Larger1Top_pressed()
-    {
-        ChangeSlider(topRadiusSlider, 1f);
-    }
+	private void _on_Smaller1Top_pressed()
+	{
+		ChangeSlider(topRadiusSlider, -1f);
+	}
 
 
-    private void _on_Smaller0Bottom_pressed()
-    {
-        ChangeSlider(bottomRadiusSlider, -0.1f);
-    }
+	private void _on_Larger0Top_pressed()
+	{
+		ChangeSlider(topRadiusSlider, 0.1f);
+	}
 
 
-    private void _on_Smaller1Bottom_pressed()
-    {
-        ChangeSlider(bottomRadiusSlider, -1f);
-    }
+	private void _on_Larger1Top_pressed()
+	{
+		ChangeSlider(topRadiusSlider, 1f);
+	}
 
 
-    private void _on_Larger0Bottom_pressed()
-    {
-        ChangeSlider(bottomRadiusSlider, 0.1f);
-    }
+	private void _on_Smaller0Bottom_pressed()
+	{
+		ChangeSlider(bottomRadiusSlider, -0.1f);
+	}
 
 
-    private void _on_Larger1Bottom_pressed()
-    {
-        ChangeSlider(bottomRadiusSlider, 1f);
-    }
+	private void _on_Smaller1Bottom_pressed()
+	{
+		ChangeSlider(bottomRadiusSlider, -1f);
+	}
 
 
-    private void _on_Smaller0Height_pressed()
-    {
-        ChangeSlider(heightSlider, -0.1f);
-    }
+	private void _on_Larger0Bottom_pressed()
+	{
+		ChangeSlider(bottomRadiusSlider, 0.1f);
+	}
 
 
-    private void _on_Smaller1Height_pressed()
-    {
-        ChangeSlider(heightSlider, -1f);
-    }
+	private void _on_Larger1Bottom_pressed()
+	{
+		ChangeSlider(bottomRadiusSlider, 1f);
+	}
 
 
-    private void _on_Larger0Height_pressed()
-    {
-        ChangeSlider(heightSlider, 0.1f);
-    }
+	private void _on_Smaller0Height_pressed()
+	{
+		ChangeSlider(heightSlider, -0.1f);
+	}
 
 
-    private void _on_Larger1Height_pressed()
-    {
-        ChangeSlider(heightSlider, 1f);
-    }
-
-    private void ChangeSlider(HSlider slider, float value)
-    {
-        float slidervalue = slider.Value;
-        float slidermax = slider.MaxValue;
-        float slidermin = slider.MinValue;
-        slider.Value = (float)Math.Round(slider.Value * 10) / 10;//rounding
+	private void _on_Smaller1Height_pressed()
+	{
+		ChangeSlider(heightSlider, -1f);
+	}
 
 
-        if (slider.Value + value < slidermax & slider.Value + value > slidermin)//slider + value between min and max
-        {
-            slider.Value += value;
-        }
-        else
-        {
-            slider.MaxValue += value;
-            slider.MinValue += value;
-            slider.Value += value;
-        }
-        OnSliderChanged();
-    }
+	private void _on_Larger0Height_pressed()
+	{
+		ChangeSlider(heightSlider, 0.1f);
+	}
 
-    #endregion
 
-    public void setup()
-    {
-        OnSliderChanged();
-    }
+	private void _on_Larger1Height_pressed()
+	{
+		ChangeSlider(heightSlider, 1f);
+	}
 
-    private void _on_Slider_value_changed(float value)
-    {
-        OnSliderChanged();
-    }
+	private void ChangeSlider(HSlider slider, float value)
+	{
+		float slidervalue = (float)slider.Value;
+		float slidermax = (float)slider.MaxValue;
+		float slidermin = (float)slider.MinValue;
+		slider.Value = (float)Math.Round(slider.Value * 10) / 10;//rounding
+
+
+		if (slider.Value + value < slidermax & slider.Value + value > slidermin)//slider + value between min and max
+		{
+			slider.Value += value;
+		}
+		else
+		{
+			slider.MaxValue += value;
+			slider.MinValue += value;
+			slider.Value += value;
+		}
+		OnSliderChanged();
+	}
+
+	#endregion
+
+	public void setup()
+	{
+		OnSliderChanged();
+	}
+
+	private void _on_Slider_value_changed(float value)
+	{
+		OnSliderChanged();
+	}
 }
 
