@@ -62,8 +62,8 @@ public class Selected : Spatial
 								if (connection.IsClass("Area"))
 								{
 									Area area = (Area)connection;
-									object[] overlaps = area.GetOverlappingAreas();
-									if (overlaps.Length != 0)
+									Godot.Collections.Array overlaps = area.GetOverlappingAreas();
+									if (overlaps.Count != 0)
 									{
 										Node overlap = (Node)overlaps[0];
 										if (overlap.IsClass("Area") & !this.GetChild(0).IsAParentOf(overlap))//dont overlap with other connections of same part

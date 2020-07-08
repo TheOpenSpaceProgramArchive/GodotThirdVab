@@ -92,11 +92,10 @@ public class PartSelection : Panel
 				partnode.SetNormalTexture(part.iconTexture);
 				partnode.SetExpand(true);
 				partnode.SetCustomMinimumSize(new Vector2(50, 50));
+				Godot.Collections.Array partarray = new Godot.Collections.Array() ;
+				partarray[0] = part;
 				
-				Godot.Collections.Array []obj = (Godot.Collections.Array) new object[1];
-				obj[0] = part;
-				
-				partnode.Connect("pressed", this, "OnPartPressed", obj);
+				partnode.Connect("pressed", this, "OnPartPressed", partarray);
 				container.AddChild(partnode);
 			}
 		}
@@ -105,7 +104,8 @@ public class PartSelection : Panel
 	private void OnPartPressed(object obj)
 	{
 		Part referencepart = (Part)obj;
-		Part part = (Part)referencepart.Duplicate();
+		//Part part = (Part)referencepart.Duplicate();
+		Part part = (Part)ClassDB.Instance((String)obj);
 
 		#region copyVariables
 		part.category = referencepart.category;

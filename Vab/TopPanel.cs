@@ -42,9 +42,7 @@ public class TopPanel : Panel
 			Button craftbutton = new Button();
 			craftbutton.Text = craftname;
 
-			object []obj = new object[1];
-			obj[0] = craftname;
-			craftbutton.Connect("pressed", this, "OnLoadCraftPressed", obj);
+			craftbutton.Connect("pressed", this, "OnLoadCraftPressed", new Godot.Collections.Array(craftname));
 
 			loadpopup.AddChild(craftbutton);
 			craftname = dir.GetNext();
